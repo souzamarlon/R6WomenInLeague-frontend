@@ -37,6 +37,7 @@ export function* signUp({ payload }) {
             uplay,
             password,
         });
+        toast.success('Your account has been created successfully!');
 
         history.push('/');
     } catch (err) {

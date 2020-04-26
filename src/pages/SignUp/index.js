@@ -6,14 +6,16 @@ import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
-import { signInRequest } from '~/store/modules/auth/actions';
+import { signUpRequest } from '~/store/modules/auth/actions';
 
 // import { Container } from './styles';
 
 const schema = Yup.object().shape({
+    name: Yup.string().required('Missing name field'),
     email: Yup.string()
         .email('Insira um e-mail válido')
         .required('O e-mail é obrigatório'),
+    uplay: Yup.string(),
     password: Yup.string().required('A senha é obrigatoria'),
 });
 
@@ -21,8 +23,9 @@ export default function SignIn() {
     const dispatch = useDispatch();
     const loading = useSelector((state) => state.auth.loading);
 
-    function handleSubmit({ email, password }) {
-        dispatch(signInRequest(email, password));
+    function handleSubmit({ name, email, uplay, password }) {
+        console.tron.log(name, email, uplay);
+        dispatch(signUpRequest(name, email, uplay, password));
     }
     return (
         <>
@@ -36,7 +39,7 @@ export default function SignIn() {
                     placeholder="exemplo@email.com"
                 />
                 <p>UPLAY NICKNAME:</p>
-                <Input name="uplay" type="name" placeholder="Ash" />
+                <Input name="uplay" placeholder="Ash" />
                 <p>PASSWORD:</p>
                 <Input
                     name="password"
