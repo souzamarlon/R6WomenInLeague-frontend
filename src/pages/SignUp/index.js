@@ -27,12 +27,16 @@ export default function SignIn() {
     return (
         <>
             <Form schema={schema} onSubmit={handleSubmit}>
+                <p>NAME:</p>
+                <Input name="name" type="name" placeholder="Eliza Ash Cohen" />
                 <p>E-MAIL:</p>
                 <Input
                     name="email"
                     type="email"
                     placeholder="exemplo@email.com"
                 />
+                <p>UPLAY NICKNAME:</p>
+                <Input name="uplay" type="name" placeholder="Ash" />
                 <p>PASSWORD:</p>
                 <Input
                     name="password"
@@ -41,10 +45,10 @@ export default function SignIn() {
                 />
 
                 <button className="signIn" type="submit">
-                    {loading ? 'Carregando... ' : 'LOGIN'}
+                    {loading ? 'Carregando... ' : 'SIGN UP'}
                 </button>
-                <Link to="/signup" className="signUpGoBack">
-                    SIGN UP
+                <Link to="/" className="signUpGoBack">
+                    ALREADY HAVE A LOGIN
                 </Link>
             </Form>
         </>

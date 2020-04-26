@@ -28,8 +28,8 @@ export const Box = styled.div`
 
 export const Container = styled.div`
     background: rgba(27, 25, 28, 0.74);
-    width: 360px;
-    height: 450px;
+    width: 400px;
+    height: 561px;
     display: flex;
     margin: 10px auto;
 
@@ -61,7 +61,6 @@ export const Content = styled.div`
         }
 
         button.signIn {
-            margin: 5px 0 0;
             height: 45px;
             background: rgba(255, 255, 255, 0.92);
             letter-spacing: 0.1em;
@@ -69,15 +68,15 @@ export const Content = styled.div`
             border: 0;
             border-radius: 25px;
             font-size: 16px;
-            margin-top: 40px;
+            margin-top: 20px;
             transition: background 0.2s;
             &:hover {
                 background: ${darken(0.03, 'rgba(255, 255, 255, 0.92)')};
             }
         }
 
-        button.signUp {
-            margin: 5px 0 0;
+        a.signUpGoBack {
+            padding-top: 15px;
             height: 45px;
             background: rgba(4, 251, 162, 0.4);
             letter-spacing: 0.1em;
@@ -85,7 +84,7 @@ export const Content = styled.div`
             border: 0;
             border-radius: 25px;
             font-size: 16px;
-            margin-top: 20px;
+            margin-top: 15px;
             transition: background 0.2s;
             &:hover {
                 background: ${darken(0.03, 'rgba(4, 251, 162, 0.4)')};

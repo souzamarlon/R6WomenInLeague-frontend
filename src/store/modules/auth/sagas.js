@@ -21,7 +21,7 @@ export function* signIn({ payload }) {
 
         yield put(signInSuccess(token, user));
 
-        history.push('/');
+        // history.push('/');
     } catch (err) {
         yield put(signFailure());
         toast.error('Authentication failure!');
@@ -30,17 +30,17 @@ export function* signIn({ payload }) {
 
 export function* signUp({ payload }) {
     try {
-        const { name, email, password } = payload;
+        const { name, email, uplay, password } = payload;
         yield call(api.post, 'users', {
             name,
             email,
+            uplay,
             password,
-            provider: true,
         });
 
         history.push('/');
     } catch (err) {
-        toast.error('Falha no cadastro, verifique seus dados!');
+        toast.error('Failure, something is wrong!');
 
         yield put(signFailure());
     }
