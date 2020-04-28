@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import Header from '~/components/Header';
+import Header from '~/components/Header';
+import Background from '~/assets/background.jpg';
 
-import { Wrapper } from './styles';
+import { Wrapper, Title } from './styles';
 
 export default function DefaultLayout({ children }) {
     return (
-        <Wrapper>
-            {/* <Header /> */}
+        <Wrapper background={Background}>
+            <Title>R6 WOMEN IN LEAGUE</Title>
+            <Header />
             {children}
         </Wrapper>
     );

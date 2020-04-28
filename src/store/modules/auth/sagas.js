@@ -21,7 +21,7 @@ export function* signIn({ payload }) {
 
         yield put(signInSuccess(token, user));
 
-        // history.push('/');
+        history.push('/dashboard');
     } catch (err) {
         yield put(signFailure());
         toast.error('Authentication failure!');

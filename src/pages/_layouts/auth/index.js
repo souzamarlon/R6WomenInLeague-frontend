@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Wrapper, Title, Content, Container, Box } from './styles';
 
-import SignInPic from '~/assets/backgroundWoman.jpg';
+import SignInPic from '~/assets/games.jpg';
 
 export default function AuthLayout({ children }) {
     return (
