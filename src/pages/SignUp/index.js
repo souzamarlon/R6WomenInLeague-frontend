@@ -29,16 +29,15 @@ export default function SignUp() {
         const response = await axios.get(
             `https://r6.apitab.com/search/uplay/${uplay}`
         );
-        // return axios.get(`https://r6.apitab.com/player/${item}`);
 
         if (!response.data.foundmatch) {
-            return toast.error('Authentication failure!');
+            return toast.error('Uplay nickname does not exists!');
         }
 
-        const playerInfo =
-            response.data.players[Object.keys(response.data.players)[0]];
-        console.tron.log(response);
-        //   dispatch(signUpRequest(name, email, uplay, password));
+        // const playerInfo =
+        //     response.data.players[Object.keys(response.data.players)[0]];
+        // console.tron.log(playerInfo);
+        return dispatch(signUpRequest(name, email, uplay, password));
     }
     return (
         <>
