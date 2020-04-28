@@ -1,7 +1,9 @@
 import React from 'react';
+import axios from 'axios';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
@@ -19,13 +21,24 @@ const schema = Yup.object().shape({
     password: Yup.string().required('A senha é obrigatoria'),
 });
 
-export default function SignIn() {
+export default function SignUp() {
     const dispatch = useDispatch();
     const loading = useSelector((state) => state.auth.loading);
 
-    function handleSubmit({ name, email, uplay, password }) {
-        console.tron.log(name, email, uplay);
-        dispatch(signUpRequest(name, email, uplay, password));
+    async function handleSubmit({ name, email, uplay, password }) {
+        const response = await axios.get(
+            `https://r6.apitab.com/search/uplay/${uplay}`
+        );
+        // return axios.get(`https://r6.apitab.com/player/${item}`);
+
+        if (!response.data.foundmatch) {
+            return toast.error('Authentication failure!');
+        }
+
+        const playerInfo =
+            response.data.players[Object.keys(response.data.players)[0]];
+        console.tron.log(response);
+        //   dispatch(signUpRequest(name, email, uplay, password));
     }
     return (
         <>
