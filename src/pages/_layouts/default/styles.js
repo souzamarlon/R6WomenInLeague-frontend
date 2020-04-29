@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
     background: url(${(props) => props.background});
     background-size: 100% 100%;
     text-align: center;
+    padding-top: 44px;
 `;
 
 export const Title = styled.text`

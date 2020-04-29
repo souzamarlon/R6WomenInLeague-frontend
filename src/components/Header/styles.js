@@ -6,7 +6,7 @@ export const Container = styled.div`
     justify-content: space-between;
     display: flex;
     /* width: 100vw; */
-    margin: auto;
+    margin: 20px auto;
 
     width: 604px;
     height: 43px;
@@ -18,10 +18,14 @@ export const Container = styled.div`
 export const Content = styled.div`
     display: flex;
     height: 64px;
-    align-items: center;
+
+    flex-direction: row;
+    justify-content: space-between;
     nav {
         display: flex;
         align-items: center;
+        padding-right: 20px;
+
         color: #000000;
         img {
             display: block;
@@ -41,30 +45,13 @@ export const Content = styled.div`
         a:hover {
             color: #000000;
         }
-        .active {
+
+        .selected {
             color: #000000;
         }
-    }
-`;
-export const Profile = styled.div`
-    display: flex;
-    align-items: center;
-    div {
-        text-align: right;
-        margin-right: 10px;
-        strong {
-            display: block;
-            color: #666666;
-            font-size: 1.4rem;
-            line-height: 1.6rem;
-        }
-        button {
-            display: 1;
-            font-size: 1.2rem;
-            background: #ffff;
-            color: #de3b3b;
-            border: 0;
-            margin-left: 8px;
-        }
+
+        /* .active {
+            color: #000000;
+        } */
     }
 `;
