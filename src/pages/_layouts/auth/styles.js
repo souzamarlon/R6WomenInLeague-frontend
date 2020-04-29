@@ -100,3 +100,15 @@ export const Content = styled.div`
         }
     }
 `;
+
+export const Photo = styled.div`
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 2px;
+    padding-right: 5px;
+    text-align: right;
+    span {
+        color: #fff;
+    }
+`;

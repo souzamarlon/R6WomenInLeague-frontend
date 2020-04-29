@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Wrapper, Title, Content, Container, Box } from './styles';
+import { Wrapper, Title, Content, Container, Box, Photo } from './styles';
 
 import SignInPic from '~/assets/games.jpg';
 
@@ -14,6 +14,9 @@ export default function AuthLayout({ children }) {
                     <Content>{children}</Content>
                 </Container>
             </Box>
+            <Photo>
+                <span>Photo by Carl Raw on Unsplash</span>
+            </Photo>
         </Wrapper>
     );
 }
