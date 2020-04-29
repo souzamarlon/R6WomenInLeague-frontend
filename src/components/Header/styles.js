@@ -21,6 +21,7 @@ export const Content = styled.div`
 
     flex-direction: row;
     justify-content: space-between;
+    margin: 0 auto;
     nav {
         display: flex;
         align-items: center;
@@ -45,13 +46,8 @@ export const Content = styled.div`
         a:hover {
             color: #000000;
         }
-
         .selected {
             color: #000000;
         }
-
-        /* .active {
-            color: #000000;
-        } */
     }
 `;
