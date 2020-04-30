@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
+import { Form } from '@rocketseat/unform';
+import api from '~/services/api';
 
-import { Form, useField } from '@rocketseat/unform';
 import { Container, Options, Box, SubmitButton } from './styles';
 
-export default function Search() {
+export default function Search({ onChange }) {
     const [selectOptions, setSelectOptions] = useState([{}]);
 
-    // const { fieldName, registerField, error } = useField(name);
     const playStyle_options = [
         { id: 1, value: 'Support', label: 'Support' },
         { id: 2, value: 'Entry fragger', label: 'Entry fragger' },
@@ -25,7 +25,16 @@ export default function Search() {
     ];
 
     async function handleSubmit() {
-        console.tron.log(selectOptions);
+        const players = await api.get(`users`, {
+            params: {
+                play_style: selectOptions.play_style,
+                ranked: selectOptions.ranked,
+                competition: selectOptions.competition,
+                times: selectOptions.times,
+            },
+        });
+
+        onChange(players.data);
     }
 
     return (

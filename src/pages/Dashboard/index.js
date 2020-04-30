@@ -5,15 +5,15 @@ import { Container } from './styles';
 import Search from '~/components/Search';
 
 export default function Dashboard() {
-    // const [op, setOp] = useState([]);
+    const [playerData, setPlayerData] = useState([]);
 
     //
 
-    // console.tron.log(op.value);
+    console.tron.log(playerData);
 
     return (
         <Container>
-            <Search />
+            <Search onChange={setPlayerData} />
         </Container>
     );
 }
