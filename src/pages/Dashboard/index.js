@@ -7,9 +7,7 @@ import Search from '~/components/Search';
 export default function Dashboard() {
     const [playerData, setPlayerData] = useState([]);
 
-    //
-
-    console.tron.log(playerData);
+    // console.tron.log(playerData);
 
     return (
         <Container>

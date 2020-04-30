@@ -6,7 +6,12 @@ import api from '~/services/api';
 import { Container, Options, Box, SubmitButton } from './styles';
 
 export default function Search({ onChange }) {
-    const [selectOptions, setSelectOptions] = useState([{}]);
+    const [selectOptions, setSelectOptions] = useState({
+        play_style: { id: 3, value: 'Versatile' },
+        competition: { id: 2, value: 'false' },
+        ranked: { id: 2, value: 'false' },
+        times: { id: 4, value: 'All Day' },
+    });
 
     const playStyle_options = [
         { id: 1, value: 'Support', label: 'Support' },
@@ -27,14 +32,15 @@ export default function Search({ onChange }) {
     async function handleSubmit() {
         const players = await api.get(`users`, {
             params: {
-                play_style: selectOptions.play_style,
-                ranked: selectOptions.ranked,
-                competition: selectOptions.competition,
-                times: selectOptions.times,
+                play_style: selectOptions.play_style.value,
+                ranked: selectOptions.ranked.value,
+                competition: selectOptions.competition.value,
+                times: selectOptions.times.value,
             },
         });
 
         onChange(players.data);
+        console.tron.log(players.data);
     }
 
     return (
@@ -49,10 +55,18 @@ export default function Search({ onChange }) {
                         <Select
                             name="play_style"
                             // cacheOptions
-                            defaultOptions
+                            value={playStyle_options.find((item) => {
+                                return item.id === selectOptions.play_style.id;
+                            })}
                             options={playStyle_options}
                             onChange={(item) => {
-                                setSelectOptions({ play_style: item.value });
+                                setSelectOptions({
+                                    ...selectOptions,
+                                    play_style: {
+                                        id: item.id,
+                                        value: item.value,
+                                    },
+                                });
                             }}
                             isMulti={false}
                             theme={(theme) => ({
@@ -71,13 +85,18 @@ export default function Search({ onChange }) {
                         <Select
                             name="competition"
                             // cacheOptions
-                            defaultOptions
+                            value={boolean_options.find((item) => {
+                                return item.id === selectOptions.competition.id;
+                            })}
                             options={boolean_options}
                             isMulti={false}
                             onChange={(item) => {
                                 setSelectOptions({
                                     ...selectOptions,
-                                    competition: item.value,
+                                    competition: {
+                                        id: item.id,
+                                        value: item.value,
+                                    },
                                 });
                             }}
                             theme={(theme) => ({
@@ -96,12 +115,17 @@ export default function Search({ onChange }) {
                         <Select
                             name="ranked"
                             // cacheOptions
-                            defaultOptions
+                            value={boolean_options.find((item) => {
+                                return item.id === selectOptions.ranked.id;
+                            })}
                             options={boolean_options}
                             onChange={(item) => {
                                 setSelectOptions({
                                     ...selectOptions,
-                                    ranked: item.value,
+                                    ranked: {
+                                        id: item.id,
+                                        value: item.value,
+                                    },
                                 });
                             }}
                             isMulti={false}
@@ -123,13 +147,18 @@ export default function Search({ onChange }) {
                         <Select
                             name="times"
                             // cacheOptions
-                            defaultOptions
+                            value={times_options.find((item) => {
+                                return item.id === selectOptions.times.id;
+                            })}
                             options={times_options}
                             isMulti={false}
                             onChange={(item) => {
                                 setSelectOptions({
                                     ...selectOptions,
-                                    times: item.value,
+                                    times: {
+                                        id: item.id,
+                                        value: item.value,
+                                    },
                                 });
                             }}
                             theme={(theme) => ({
