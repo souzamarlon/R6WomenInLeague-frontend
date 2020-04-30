@@ -8,7 +8,7 @@ export const Container = styled.div`
     /* width: 100vw; */
     margin: 20px auto;
 
-    width: 604px;
+    width: 31.45vw;
     height: 43px;
     background: rgba(221, 221, 221, 0.2);
     border: 1px solid rgba(221, 221, 221, 0.2);
@@ -38,7 +38,7 @@ export const Content = styled.div`
             border-right: 1px solid #dddddd;
         }
         a {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-right: 15px;
             font-weight: bold;
             color: #999999;

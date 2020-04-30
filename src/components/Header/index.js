@@ -15,7 +15,7 @@ export default function Header() {
                             activeClassName="selected"
                             // className={open.dashboard ? 'active' : null}
                         >
-                            FIND FRIENDS
+                            SEARCH
                         </NavLink>
                         <NavLink to="/friends" activeClassName="selected">
                             FRIENDS
