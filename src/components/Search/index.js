@@ -40,7 +40,6 @@ export default function Search({ onChange }) {
         });
 
         onChange(players.data);
-        console.tron.log(players.data);
     }
 
     return (
