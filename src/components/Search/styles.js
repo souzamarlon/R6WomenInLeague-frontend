@@ -50,7 +50,7 @@ export const SubmitButton = styled.button`
     width: 200px;
     height: 41px;
     color: #fff;
-    background: rgba(187, 237, 248, 0.43);
+    background: rgba(5, 250, 88, 0.4);
     /* box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4); */
 
     transition: background 0.2s;

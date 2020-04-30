@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
-import { Form, Input } from '@rocketseat/unform';
+import { Form, useField } from '@rocketseat/unform';
 import { Container, Options, Box, SubmitButton } from './styles';
 
 export default function Search() {
-    const [op, setOp] = useState([]);
+    const [selectOptions, setSelectOptions] = useState([{}]);
+
+    // const { fieldName, registerField, error } = useField(name);
     const playStyle_options = [
         { id: 1, value: 'Support', label: 'Support' },
         { id: 2, value: 'Entry fragger', label: 'Entry fragger' },
         { id: 3, value: 'Versatile', label: 'Versatile' },
     ];
     const boolean_options = [
-        { id: 1, value: 'Yes', label: 'Yes' },
-        { id: 2, value: 'No', label: 'No' },
+        { id: 1, value: 'true', label: 'Yes' },
+        { id: 2, value: 'false', label: 'No' },
     ];
     const times_options = [
         { id: 1, value: 'Morning', label: 'Morning' },
@@ -22,7 +24,9 @@ export default function Search() {
         { id: 4, value: 'All Day', label: 'All Day' },
     ];
 
-    async function handleSubmit({ name }) {}
+    async function handleSubmit() {
+        console.tron.log(selectOptions);
+    }
 
     return (
         <Container>
@@ -38,7 +42,9 @@ export default function Search() {
                             // cacheOptions
                             defaultOptions
                             options={playStyle_options}
-                            onChange={setOp}
+                            onChange={(item) => {
+                                setSelectOptions({ play_style: item.value });
+                            }}
                             isMulti={false}
                             theme={(theme) => ({
                                 ...theme,
@@ -58,8 +64,13 @@ export default function Search() {
                             // cacheOptions
                             defaultOptions
                             options={boolean_options}
-                            onChange={setOp}
                             isMulti={false}
+                            onChange={(item) => {
+                                setSelectOptions({
+                                    ...selectOptions,
+                                    competition: item.value,
+                                });
+                            }}
                             theme={(theme) => ({
                                 ...theme,
                                 borderRadius: 0,
@@ -78,7 +89,12 @@ export default function Search() {
                             // cacheOptions
                             defaultOptions
                             options={boolean_options}
-                            onChange={setOp}
+                            onChange={(item) => {
+                                setSelectOptions({
+                                    ...selectOptions,
+                                    ranked: item.value,
+                                });
+                            }}
                             isMulti={false}
                             theme={(theme) => ({
                                 ...theme,
@@ -100,8 +116,13 @@ export default function Search() {
                             // cacheOptions
                             defaultOptions
                             options={times_options}
-                            onChange={setOp}
                             isMulti={false}
+                            onChange={(item) => {
+                                setSelectOptions({
+                                    ...selectOptions,
+                                    times: item.value,
+                                });
+                            }}
                             theme={(theme) => ({
                                 ...theme,
                                 borderRadius: 0,
