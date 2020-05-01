@@ -2,17 +2,23 @@ import React, { useState } from 'react';
 
 import { Container, Content } from './styles';
 import Search from '~/components/Search';
-import apiR6 from '~/services/apiR6';
+import api from '~/services/api';
 
 export default function Dashboard() {
     const [playerData, setPlayerData] = useState([]);
 
-    async function ApiR6() {
-        const apiTest = await apiR6.get('stats/Devii/pc/seasonal');
-        console.tron.log(apiTest);
-    }
+    // async function ApiR6() {
+    //     const apiTest = await api.get('/stats', {
+    //         params: {
+    //             username: 'MarlonRCM',
+    //             platform: 'pc',
+    //             type: 'seasonal',
+    //         },
+    //     });
+    //     console.tron.log(apiTest.data);
+    // }
 
-    ApiR6();
+    // ApiR6();
 
     return (
         <Container isAlign={!!playerData.length}>
