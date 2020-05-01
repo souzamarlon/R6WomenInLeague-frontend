@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 90%;
     margin: auto;
-    height: 80%;
+    height: 84%;
     display: flex;
     justify-content: ${(props) => (props.isAlign ? 'flex-start' : 'center')};
     /* align-items: center; */
@@ -16,10 +16,17 @@ export const Content = styled.div`
     height: 347px;
     background: rgba(10, 10, 10, 0.69);
     border-radius: 9px;
-    margin: 20px;
+    margin: 10px 10px;
 
     img {
         width: 187px;
         height: 186px;
     }
+`;
+
+export const Cards = styled.ul`
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 10px;
+    list-style: none;
 `;
