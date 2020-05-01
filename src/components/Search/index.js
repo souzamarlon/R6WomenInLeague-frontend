@@ -45,7 +45,6 @@ export default function Search({ onChange }) {
     return (
         <Container>
             <h1>Which type of player are you looking for?</h1>
-            {/* <Form schema={schema} onSubmit={handleSubmit}> */}
 
             <Form onSubmit={handleSubmit}>
                 <Box>
