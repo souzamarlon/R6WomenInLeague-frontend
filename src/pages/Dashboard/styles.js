@@ -16,7 +16,10 @@ export const Content = styled.div`
     height: 347px;
     background: rgba(10, 10, 10, 0.69);
     border-radius: 9px;
-    justify-content: flex-start;
-    position: absolute;
-    /* left: 0; */
+    margin: 20px;
+
+    img {
+        width: 187px;
+        height: 186px;
+    }
 `;
