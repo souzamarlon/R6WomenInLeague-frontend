@@ -30,7 +30,7 @@ export default function Search({ onChange }) {
     ];
 
     async function handleSubmit() {
-        const players = await api.get(`users`, {
+        const { data } = await api.get(`users`, {
             params: {
                 play_style: selectOptions.play_style.value,
                 ranked: selectOptions.ranked.value,
@@ -39,7 +39,7 @@ export default function Search({ onChange }) {
             },
         });
 
-        onChange(players.data);
+        onChange(data);
     }
 
     return (
