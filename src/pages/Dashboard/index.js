@@ -2,28 +2,28 @@ import React, { useState, useEffect } from 'react';
 
 import { Container, Content, Cards } from './styles';
 import Search from '~/components/Search';
-// import api from '~/services/api';
+import api from '~/services/api';
 
 export default function Dashboard() {
-    const [playerData, setPlayerData] = useState([
-        // 1,
-        // 2,
-        // 3,
-        // 4,
-        // 5,
-        // 6,
-        // 7,
-        // 8,
-        // 9,
-        // 10,
-        // 11,
-        // 12,
-        // 13,
-        // 14,
-        // 15,
-        // 16,
-        // 17,
-    ]);
+    const [playerData, setPlayerData] = useState([]);
+    const [r6Data, setR6Data] = useState([]);
+    // 1,
+    // 2,
+    // 3,
+    // 4,
+    // 5,
+    // 6,
+    // 7,
+    // 8,
+    // 9,
+    // 10,
+    // 11,
+    // 12,
+    // 13,
+    // 14,
+    // 15,
+    // 16,
+    // 17,
 
     // const [page, setPage] = useState(1);
 
@@ -42,15 +42,26 @@ export default function Dashboard() {
 
     useEffect(() => {
         async function SearchFun() {
-            // const response = await playerData.map((offset, limit) => (
-            //     offset: (page - 1) * 5,
-            //     limit: 5,
-            // ));
-            // const response = playerData[Object.keys(playerData)[1]];
-            // console.tron.log(response);
+            // const offset = (1 - 1) * 2;
+            // const limit = 2;
+            // const response = await playerData.filter({ offset, limit });
+            // const response = playerData[Object.keys(playerData)[{ offset, limit }]];
+
+            playerData.forEach(async function Avatar(item) {
+                const { data } = await api.get('/stats', {
+                    params: {
+                        username: item.uplay,
+                        platform: 'pc',
+                        type: 'seasonal',
+                    },
+                });
+                setR6Data(data.avatar_url_256);
+            });
         }
         SearchFun();
-    }, []);
+    }, [playerData]);
+
+    console.tron.log(r6Data);
 
     return (
         <Container isAlign={!!playerData.length}>
