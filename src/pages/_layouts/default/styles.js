@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
     padding-top: 44px;
 `;
 
-export const Title = styled.text`
+export const Title = styled.div`
     color: #fff;
     font-size: 40px;
     line-height: 54px;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import { Form } from '@rocketseat/unform';
-import api from '~/services/api';
 
 import { Container, Options, Box, SubmitButton } from './styles';
 
@@ -30,14 +29,12 @@ export default function Search({ onChange }) {
     ];
 
     async function handleSubmit() {
-        const { data } = await api.get(`users`, {
-            params: {
-                play_style: selectOptions.play_style.value,
-                ranked: selectOptions.ranked.value,
-                competition: selectOptions.competition.value,
-                times: selectOptions.times.value,
-            },
-        });
+        const data = {
+            play_style: selectOptions.play_style.value,
+            ranked: selectOptions.ranked.value,
+            competition: selectOptions.competition.value,
+            times: selectOptions.times.value,
+        };
 
         onChange(data);
     }
