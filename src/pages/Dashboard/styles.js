@@ -16,5 +16,5 @@ export const CardList = styled.ul`
     grid-template-columns: repeat(8, 1fr);
     grid-gap: 10px;
     list-style: none;
-    overflow: auto;
+    /* overflow: auto; */
 `;

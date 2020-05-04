@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Content = styled.button`
-    width: 187px;
+    width: 195px;
     height: 347px;
-    background: rgba(10, 10, 10, 0.69);
+    background: rgba(10, 10, 10, 0.5);
     border-radius: 9px;
     margin: 10px 10px;
     border: 0;
@@ -53,7 +53,7 @@ export const Content = styled.button`
         text-align: center;
         margin: 5px auto;
         padding-top: 2px;
-        width: 81px;
+        width: 95px;
         height: 16.34px;
         color: #fff;
         opacity: ${(props) => (props.status_competition ? 1 : 0.1)};
@@ -82,5 +82,12 @@ export const Content = styled.button`
         font-size: 10px;
         height: 14px;
         border: 0;
+    }
+    img.americaRank {
+        position: absolute;
+        margin-left: 120px;
+
+        width: 70px;
+        height: 70px;
     }
 `;
