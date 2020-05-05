@@ -54,7 +54,7 @@ export const Content = styled.div`
             height: 44px;
             padding: 0 15px;
             color: #ffff;
-            margin: 5px 0 10px;
+            margin: 0 0 10px;
             &::placeholder {
                 color: #999999;
             }
@@ -95,8 +95,14 @@ export const Content = styled.div`
             font-size: 14px;
             letter-spacing: 0.1em;
             font-weight: normal;
-            margin-top: 13px;
+            margin-top: 8px;
+            margin-bottom: 5px;
             color: #fff;
+        }
+
+        div.selectRegion {
+            background-color: #000;
+            height: 24px;
         }
     }
 `;
