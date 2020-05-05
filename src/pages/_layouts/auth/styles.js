@@ -105,6 +105,13 @@ export const Content = styled.div`
             height: 24px;
         }
     }
+
+    h1.welcome {
+        margin-bottom: 20px;
+        font-size: 35px;
+        color: #fff;
+        letter-spacing: 0.1em;
+    }
 `;
 
 export const Photo = styled.div`

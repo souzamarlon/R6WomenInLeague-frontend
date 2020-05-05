@@ -26,6 +26,7 @@ export default function SignIn() {
     }
     return (
         <>
+            <h1 className="welcome">Sign In</h1>
             <Form schema={schema} onSubmit={handleSubmit}>
                 <p>E-MAIL:</p>
                 <Input
