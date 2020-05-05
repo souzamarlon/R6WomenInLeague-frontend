@@ -6,7 +6,7 @@ export const Content = styled.button`
     height: 347px;
     background: rgba(10, 10, 10, 0.5);
     border-radius: 9px;
-    margin: 10px 10px;
+    margin: 10px 5px;
     border: 0;
     transition: background 0.3s;
     align-items: center;
