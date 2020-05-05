@@ -30,11 +30,13 @@ export function* signIn({ payload }) {
 
 export function* signUp({ payload }) {
     try {
-        const { name, email, uplay, password } = payload;
+        const { name, email, uplay, region, password } = payload;
+        console.tron.log('pay', payload);
         yield call(api.post, 'users', {
             name,
             email,
             uplay,
+            region,
             password,
         });
         toast.success('Your account has been created successfully!');

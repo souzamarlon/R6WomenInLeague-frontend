@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     align-items: center;
 `;
 
-export const Title = styled.text`
+export const Title = styled.div`
     color: #fff;
     font-size: 40px;
     line-height: 54px;

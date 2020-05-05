@@ -12,10 +12,10 @@ export function signInSuccess(token, user) {
     };
 }
 
-export function signUpRequest(name, email, uplay, password) {
+export function signUpRequest(name, email, uplay, region, password) {
     return {
         type: '@auth/SIGN_UP_REQUEST',
-        payload: { name, email, uplay, password },
+        payload: { name, email, uplay, region, password },
     };
 }
 
