@@ -61,8 +61,6 @@ export default function ReactSelect({
                 }}
                 ref={ref}
                 styles={Styles}
-                getOptionValue={(option) => option.id}
-                getOptionLabel={(option) => option.label}
                 {...rest}
             />
         </Container>
