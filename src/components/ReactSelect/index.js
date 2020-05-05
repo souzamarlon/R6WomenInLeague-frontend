@@ -1,16 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Select from 'react-select';
+import PropTypes from 'prop-types';
 
 import { Container } from './styles';
 
-export default function ReactSelect({
-    name,
-    label,
-    options,
-    onChange,
-    defaultValue,
-    ...rest
-}) {
+export default function ReactSelect({ options, onChange, defaultValue }) {
     const [selectRegion, setSelectRegion] = useState([]);
     const ref = useRef(null);
 
@@ -51,7 +45,6 @@ export default function ReactSelect({
     return (
         <Container>
             <Select
-                placeholder="South America..."
                 options={options}
                 defaultValue={options.find((item) => {
                     return item.value === defaultValue.toString();
@@ -61,8 +54,13 @@ export default function ReactSelect({
                 }}
                 ref={ref}
                 styles={Styles}
-                {...rest}
             />
         </Container>
     );
 }
+
+ReactSelect.propTypes = {
+    options: PropTypes.shape().isRequired,
+    onChange: PropTypes.shape().isRequired,
+    defaultValue: PropTypes.shape().isRequired,
+};
