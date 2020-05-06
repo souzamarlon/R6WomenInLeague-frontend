@@ -10,7 +10,8 @@ export const Container = styled.div`
     border-radius: 8px;
 
     padding-top: 10px;
-    margin-top: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 
     h1 {
         margin-top: 40px;

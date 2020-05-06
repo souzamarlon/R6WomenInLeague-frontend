@@ -9,6 +9,7 @@ import api from '~/services/api';
 export default function Dashboard() {
     const [playerData, setPlayerData] = useState([]);
     const [r6Data, setR6Data] = useState([]);
+    const [page, setPage] = useState(1);
 
     // const [page, setPage] = useState(1);
 
@@ -41,6 +42,11 @@ export default function Dashboard() {
 
         SearchFun();
     }, [playerData]);
+
+    function handlePage(action) {
+        // const count = action === 'back' ? page - 1 : page + 1;
+        setPage(action === 'back' ? page - 1 : page + 1);
+    }
 
     return (
         <Container isAlign={!!playerData.length}>

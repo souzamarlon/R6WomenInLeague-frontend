@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import api from '~/services/api';
 
-import { Content } from './styles';
+import { Content, Avatar } from './styles';
 
 export default function Card({ dataR6 }) {
     const [playerData, setPlayerData] = useState([{}]);
@@ -76,24 +76,26 @@ export default function Card({ dataR6 }) {
             status_competition={dataR6.competition}
             onClick={() => addFriend(dataR6.id)}
         >
-            <img
-                alt="rank1"
-                src={
-                    playerData.seasonData
-                        ? playerData.seasonData.rank_image
-                        : 'https://cdn.r6stats.com/seasons/ranks/unranked.svg'
-                }
-                className="americaRank"
-            />
-            <img
-                alt="avatar"
-                // src="https://ubisoft-avatars.akamaized.net/befa1d9e-179f-4f34-a5f2-4c14848cc9f6/default_256_256.png"
-                src={
-                    playerData.avatar_url
-                        ? playerData.avatar_url
-                        : 'https://api.adorable.io/avatars/50/abott@adorable.png'
-                }
-            />
+            <Avatar>
+                <img
+                    alt="rank1"
+                    src={
+                        playerData.seasonData
+                            ? playerData.seasonData.rank_image
+                            : 'https://cdn.r6stats.com/seasons/ranks/unranked.svg'
+                    }
+                    className="americaRank"
+                />
+                <img
+                    alt="avatar"
+                    // src="https://ubisoft-avatars.akamaized.net/befa1d9e-179f-4f34-a5f2-4c14848cc9f6/default_256_256.png"
+                    src={
+                        playerData.avatar_url
+                            ? playerData.avatar_url
+                            : 'https://api.adorable.io/avatars/50/abott@adorable.png'
+                    }
+                />
+            </Avatar>
 
             <h1>{dataR6.name}</h1>
             <h2>{`Play Style is ${dataR6.play_style}.`}</h2>

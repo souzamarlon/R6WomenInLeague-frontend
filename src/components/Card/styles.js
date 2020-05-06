@@ -101,6 +101,10 @@ export const Content = styled.button`
         height: 14px;
         border: 0;
     }
+`;
+
+export const Avatar = styled.div`
+    position: relative;
 
     img {
         width: 170px;

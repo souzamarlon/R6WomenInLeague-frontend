@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 90%;
+    width: 80%;
     margin: auto;
-    height: 84%;
+    /* height: 84%; */
     display: flex;
     justify-content: ${(props) => (props.isAlign ? 'flex-start' : 'center')};
     /* align-items: center; */
@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const CardList = styled.ul`
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     grid-gap: 10px;
     list-style: none;
     overflow: hidden visible;
