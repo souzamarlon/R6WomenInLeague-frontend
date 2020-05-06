@@ -37,7 +37,7 @@ export default function Dashboard() {
                         competition: playerData.competition,
                         times: playerData.times,
                         page,
-                        per_page: 8,
+                        per_page: 14,
                     },
                 });
 
@@ -51,20 +51,20 @@ export default function Dashboard() {
     function handlePage(action) {
         // const count = action === 'back' ? page - 1 : page + 1;
         setPage(action === 'back' ? page - 1 : page + 1);
-        console.tron.log(action);
     }
+    console.tron.log(playerData);
 
     return (
         <Container>
             <ButtonSwitchPages
-                disabled={page < 2}
+                disabled={page < 1}
                 onClick={() => handlePage('back')}
             >
                 <KeyboardArrowLeft style={{ fontSize: 44 }} />
             </ButtonSwitchPages>
 
             <Content isAlign={!!playerData.length}>
-                {r6Data.length ? (
+                {playerData.length !== 0 ? (
                     <CardList>
                         {r6Data.map((item) => (
                             <Card key={item.id} dataR6={item} />
@@ -76,7 +76,7 @@ export default function Dashboard() {
             </Content>
 
             <ButtonSwitchPages
-                disabled={r6Data.length < 1}
+                disabled={r6Data.length <= 1}
                 onClick={() => handlePage('next')}
             >
                 <KeyboardArrowRight style={{ fontSize: 44 }} />
