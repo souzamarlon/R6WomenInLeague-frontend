@@ -30,7 +30,7 @@ export const Content = styled.button`
     h2 {
         padding-top: 10px;
         color: rgba(250, 248, 248, 0.56);
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 
     div.ranked {
@@ -76,6 +76,19 @@ export const Content = styled.button`
         height: 16.34px;
         color: #fff;
         background-color: rgba(24, 29, 163, 0.42);
+        border-radius: 9px;
+    }
+
+    div.region {
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+        margin: 5px auto;
+        padding-top: 2px;
+        width: 81px;
+        height: 16.34px;
+        color: #fff;
+        background-color: rgba(255, 25, 34, 0.33);
         border-radius: 9px;
     }
 

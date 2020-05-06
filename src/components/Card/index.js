@@ -92,6 +92,7 @@ export default function Card({ dataR6 }) {
             <div className="ranked">RANKED</div>
             <div className="competition">CHAMPIONSHIP</div>
             <div className="times">{dataR6.times}</div>
+            <div className="region">{dataR6.region}</div>
         </Content>
     );
 }
