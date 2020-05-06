@@ -5,6 +5,7 @@ import { Content, Avatar } from './styles';
 
 export default function Card({ dataR6 }) {
     const [playerData, setPlayerData] = useState([{}]);
+    const [rank, setRank] = [{}];
 
     useEffect(() => {
         async function getPlayerData(array) {
@@ -19,15 +20,46 @@ export default function Card({ dataR6 }) {
             const { ncsa, emea, apac } = data.seasons[
                 Object.keys(data.seasons)[0]
             ].regions;
-            setPlayerData({
-                avatar_url: data.avatar_url_256,
-                ncsa,
-                emea,
-                apac,
-            });
+
+            switch (dataR6.region) {
+                case 'South America':
+                case 'North America':
+                    setPlayerData({
+                        username: data.username,
+                        avatar_url: data.avatar_url_256,
+                        seasonData: ncsa[0], // It will return the most updated data from this user.
+                    });
+                    break;
+                case 'Europe':
+                case 'Africa':
+                    setPlayerData({
+                        username: data.username,
+                        avatar_url: data.avatar_url_256,
+                        seasonData: emea[0], // It will return the most updated data from this user.
+                    });
+                    break;
+                case 'Asia':
+                case 'Oceania':
+                    setPlayerData({
+                        username: data.username,
+                        avatar_url: data.avatar_url_256,
+                        seasonData: apac[0], // It will return the most updated data from this user.
+                    });
+                    break;
+                default:
+                    setPlayerData({
+                        avatar_url: data.avatar_url_256,
+                        ncsa,
+                        emea,
+                        apac,
+                    });
+            }
         }
+
         getPlayerData();
     }, [dataR6]);
+
+    console.tron.log(playerData);
 
     return (
         <Content
@@ -37,7 +69,11 @@ export default function Card({ dataR6 }) {
         >
             <img
                 alt="rank1"
-                src="https://cdn.r6stats.com/seasons/ranks/platinum-2.svg"
+                src={
+                    playerData.seasonData
+                        ? playerData.seasonData.rank_image
+                        : 'https://cdn.r6stats.com/seasons/ranks/unranked.svg'
+                }
                 className="americaRank"
             />
             <img

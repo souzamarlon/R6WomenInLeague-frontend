@@ -30,12 +30,11 @@ export default function SignUp() {
 
     const options = [
         { id: 1, value: 'Africa', label: 'Africa' },
-        { id: 2, value: 'Antarctica', label: 'Antarctica' },
-        { id: 3, value: 'Asia', label: 'Asia' },
-        { id: 4, value: 'Europe', label: 'Europe' },
-        { id: 5, value: 'North America', label: 'North America' },
-        { id: 6, value: 'Oceania', label: 'Oceania' },
-        { id: 7, value: 'South America', label: 'South America' },
+        { id: 2, value: 'Asia', label: 'Asia' },
+        { id: 3, value: 'Europe', label: 'Europe' },
+        { id: 4, value: 'North America', label: 'North America' },
+        { id: 5, value: 'Oceania', label: 'Oceania' },
+        { id: 6, value: 'South America', label: 'South America' },
     ];
 
     async function handleSubmit({ name, email, uplay, password }) {
