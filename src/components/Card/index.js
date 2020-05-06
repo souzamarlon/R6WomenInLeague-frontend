@@ -5,7 +5,6 @@ import { Content, Avatar } from './styles';
 
 export default function Card({ dataR6 }) {
     const [playerData, setPlayerData] = useState([{}]);
-    const [rank, setRank] = [{}];
 
     useEffect(() => {
         async function getPlayerData(array) {

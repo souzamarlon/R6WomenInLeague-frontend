@@ -5,6 +5,8 @@ export const Content = styled.button`
     width: 195px;
     height: 347px;
     background: rgba(10, 10, 10, 0.5);
+    /* box-sizing: border-box; */
+    box-shadow: 5px 5px 8px rgb(10, 10, 10);
     border-radius: 9px;
     margin: 10px 5px;
     border: 0;
