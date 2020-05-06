@@ -65,6 +65,7 @@ export default function Card({ dataR6 }) {
             key={dataR6.id}
             status_ranked={dataR6.ranked}
             status_competition={dataR6.competition}
+            onClick={() => {}}
         >
             <img
                 alt="rank1"

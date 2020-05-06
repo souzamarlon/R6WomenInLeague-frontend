@@ -12,8 +12,17 @@ export const Content = styled.button`
     border: 0;
     transition: background 0.3s;
     align-items: center;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+
     &:hover {
         background: ${darken(0.3, '#8C0ABA')};
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+        top: 10px;
+        position: relative;
     }
 
     img {
