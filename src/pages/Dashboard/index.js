@@ -47,7 +47,7 @@ export default function Dashboard() {
             {r6Data.length ? (
                 <CardList>
                     {r6Data.map((item) => (
-                        <Card dataR6={item} />
+                        <Card key={item.id} dataR6={item} />
                     ))}
                 </CardList>
             ) : (

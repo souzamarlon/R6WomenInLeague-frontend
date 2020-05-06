@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import api from '~/services/api';
 
-import { Content, Avatar } from './styles';
+import { Content } from './styles';
 
 export default function Card({ dataR6 }) {
     const [playerData, setPlayerData] = useState([{}]);
@@ -58,14 +59,22 @@ export default function Card({ dataR6 }) {
         getPlayerData();
     }, [dataR6]);
 
-    console.tron.log(playerData);
+    async function addFriend(user_friend) {
+        try {
+            await api.post('/friendship', { user_friend });
+
+            return toast.success(`Added ${dataR6.name} successfully`);
+        } catch (err) {
+            return toast.error('Failure to add your friend!');
+        }
+    }
 
     return (
         <Content
             key={dataR6.id}
             status_ranked={dataR6.ranked}
             status_competition={dataR6.competition}
-            onClick={() => {}}
+            onClick={() => addFriend(dataR6.id)}
         >
             <img
                 alt="rank1"

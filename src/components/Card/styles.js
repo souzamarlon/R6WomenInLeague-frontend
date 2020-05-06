@@ -25,12 +25,6 @@ export const Content = styled.button`
         position: relative;
     }
 
-    img {
-        width: 170px;
-        height: 175px;
-        border-radius: 100%;
-    }
-
     h1 {
         padding-top: 12px;
         color: #fff;
@@ -107,10 +101,16 @@ export const Content = styled.button`
         height: 14px;
         border: 0;
     }
+
+    img {
+        width: 170px;
+        height: 175px;
+        border-radius: 100%;
+    }
+
     img.americaRank {
         position: absolute;
         margin-left: 120px;
-
         width: 70px;
         height: 70px;
     }

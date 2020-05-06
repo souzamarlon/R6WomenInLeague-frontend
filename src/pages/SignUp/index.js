@@ -48,7 +48,7 @@ export default function SignUp() {
             });
 
             const region = selectRegion.length ? selectRegion : defaultValue;
-            console.tron.log(region);
+
             // TODO - Check if it does not have another account using the same Email or Uplay Nickname.
             return dispatch(
                 signUpRequest(name, email, uplay, region, password)
