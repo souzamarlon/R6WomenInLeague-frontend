@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container, CardList } from './styles';
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
+
+import { Container, Content, CardList, ButtonSwitchPages } from './styles';
+
 import Search from '~/components/Search';
 import Card from '~/components/Card';
 
@@ -33,6 +36,8 @@ export default function Dashboard() {
                         ranked: playerData.ranked,
                         competition: playerData.competition,
                         times: playerData.times,
+                        page,
+                        per_page: 8,
                     },
                 });
 
@@ -41,24 +46,41 @@ export default function Dashboard() {
         }
 
         SearchFun();
-    }, [playerData]);
+    }, [playerData, page]);
 
     function handlePage(action) {
         // const count = action === 'back' ? page - 1 : page + 1;
         setPage(action === 'back' ? page - 1 : page + 1);
+        console.tron.log(action);
     }
 
     return (
-        <Container isAlign={!!playerData.length}>
-            {r6Data.length ? (
-                <CardList>
-                    {r6Data.map((item) => (
-                        <Card key={item.id} dataR6={item} />
-                    ))}
-                </CardList>
-            ) : (
-                <Search onChange={setPlayerData} />
-            )}
+        <Container>
+            <ButtonSwitchPages
+                disabled={page < 2}
+                onClick={() => handlePage('back')}
+            >
+                <KeyboardArrowLeft style={{ fontSize: 44 }} />
+            </ButtonSwitchPages>
+
+            <Content isAlign={!!playerData.length}>
+                {r6Data.length ? (
+                    <CardList>
+                        {r6Data.map((item) => (
+                            <Card key={item.id} dataR6={item} />
+                        ))}
+                    </CardList>
+                ) : (
+                    <Search onChange={setPlayerData} />
+                )}
+            </Content>
+
+            <ButtonSwitchPages
+                disabled={r6Data.length < 1}
+                onClick={() => handlePage('next')}
+            >
+                <KeyboardArrowRight style={{ fontSize: 44 }} />
+            </ButtonSwitchPages>
         </Container>
     );
 }
