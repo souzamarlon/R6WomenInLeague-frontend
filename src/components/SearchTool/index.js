@@ -4,7 +4,7 @@ import { Form } from '@rocketseat/unform';
 
 import { Container, Options, Box, SubmitButton } from './styles';
 
-export default function Search({ onChange }) {
+export default function SearchTool({ onChange }) {
     const [selectOptions, setSelectOptions] = useState({
         play_style: { id: 3, value: 'Versatile' },
         competition: { id: 2, value: 'false' },

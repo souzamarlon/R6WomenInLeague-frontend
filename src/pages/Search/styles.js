@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const Content = styled.div`
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: ${(props) => (props.isAlign ? 'flex-start' : 'center')};
     /* align-items: center; */
     background: rgba(27, 25, 28, 0.74);
     border-radius: 8px;

@@ -9,7 +9,7 @@ import Card from '~/components/Card';
 
 import api from '~/services/api';
 
-export default function Dashboard() {
+export default function Search() {
     const [playerData, setPlayerData] = useState([]);
     const [r6Data, setR6Data] = useState([]);
     const [page, setPage] = useState(1);
@@ -29,14 +29,20 @@ export default function Dashboard() {
 
     useEffect(() => {
         async function SearchFun() {
-            const response = await api.get(`users`, {
-                params: {
-                    page,
-                    per_page: 14,
-                },
-            });
+            if (playerData.length !== 0) {
+                const response = await api.get(`users`, {
+                    params: {
+                        play_style: playerData.play_style,
+                        ranked: playerData.ranked,
+                        competition: playerData.competition,
+                        times: playerData.times,
+                        page,
+                        per_page: 14,
+                    },
+                });
 
-            setR6Data(response.data);
+                setR6Data(response.data);
+            }
         }
 
         SearchFun();
@@ -57,12 +63,16 @@ export default function Dashboard() {
                 <KeyboardArrowLeft style={{ fontSize: 44 }} />
             </ButtonSwitchPages>
 
-            <Content>
-                <CardList>
-                    {r6Data.map((item) => (
-                        <Card key={item.id} dataR6={item} />
-                    ))}
-                </CardList>
+            <Content isAlign={!!playerData.length}>
+                {playerData.length !== 0 ? (
+                    <CardList>
+                        {r6Data.map((item) => (
+                            <Card key={item.id} dataR6={item} />
+                        ))}
+                    </CardList>
+                ) : (
+                    <SearchTool onChange={setPlayerData} />
+                )}
             </Content>
 
             <ButtonSwitchPages
