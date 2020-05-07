@@ -10,22 +10,8 @@ import Card from '~/components/Card';
 import api from '~/services/api';
 
 export default function Dashboard() {
-    const [playerData, setPlayerData] = useState([]);
     const [r6Data, setR6Data] = useState([]);
     const [page, setPage] = useState(1);
-
-    // const [page, setPage] = useState(1);
-
-    // async function ApiR6() {
-    //     const apiTest = await api.get('/stats', {
-    //         params: {
-    //             username: 'MarlonRCM',
-    //             platform: 'pc',
-    //             type: 'seasonal',
-    //         },
-    //     });
-    //     console.tron.log(apiTest.data);
-    // }
 
     useEffect(() => {
         async function SearchFun() {
@@ -40,13 +26,12 @@ export default function Dashboard() {
         }
 
         SearchFun();
-    }, [playerData, page]);
+    }, [page]);
 
     function handlePage(action) {
         // const count = action === 'back' ? page - 1 : page + 1;
         setPage(action === 'back' ? page - 1 : page + 1);
     }
-    console.tron.log(playerData);
 
     return (
         <Container>
