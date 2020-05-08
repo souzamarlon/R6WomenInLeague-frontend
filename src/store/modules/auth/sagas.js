@@ -31,7 +31,7 @@ export function* signIn({ payload }) {
 export function* signUp({ payload }) {
     try {
         const { name, email, uplay, region, password } = payload;
-        console.tron.log('pay', payload);
+
         yield call(api.post, 'users', {
             name,
             email,

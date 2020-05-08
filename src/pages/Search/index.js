@@ -56,13 +56,6 @@ export default function Search() {
 
     return (
         <Container>
-            <ButtonSwitchPages
-                disabled={page < 1}
-                onClick={() => handlePage('back')}
-            >
-                <KeyboardArrowLeft style={{ fontSize: 44 }} />
-            </ButtonSwitchPages>
-
             <Content isAlign={!!playerData.length}>
                 {playerData.length !== 0 ? (
                     <CardList>
@@ -74,7 +67,12 @@ export default function Search() {
                     <SearchTool onChange={setPlayerData} />
                 )}
             </Content>
-
+            <ButtonSwitchPages
+                disabled={page < 1}
+                onClick={() => handlePage('back')}
+            >
+                <KeyboardArrowLeft style={{ fontSize: 44 }} />
+            </ButtonSwitchPages>
             <ButtonSwitchPages
                 disabled={r6Data.length <= 1}
                 onClick={() => handlePage('next')}

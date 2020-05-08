@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    /* position: absolute; */
     margin: 0 auto;
-    width: 84%;
-    height: 84%;
-    background: transparent;
+    width: 80%;
+    height: 80vh;
     border: 0;
-    display: flex;
 `;
 
 export const Content = styled.div`
     width: 100%;
+    height: 80vh;
     display: flex;
     justify-content: ${(props) => (props.isAlign ? 'flex-start' : 'center')};
     /* align-items: center; */
@@ -24,7 +22,6 @@ export const CardList = styled.ul`
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 10px;
     list-style: none;
-    overflow: hidden visible;
 `;
 
 export const ButtonSwitchPages = styled.button`

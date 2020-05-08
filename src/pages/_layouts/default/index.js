@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Header from '~/components/Header';
 import Background from '~/assets/background.jpg';
 
-import { Wrapper, Title, Photo } from './styles';
+import { Wrapper, Title } from './styles';
 
 export default function DefaultLayout({ children }) {
     return (
@@ -12,9 +12,8 @@ export default function DefaultLayout({ children }) {
             <Title>R6 WOMEN IN LEAGUE</Title>
             <Header />
             {children}
-            <Photo>
-                <span>Photo by Omar Prestwich on Unsplash</span>
-            </Photo>
+
+            <h1 className="photoBy">Photo by Omar Prestwich on Unsplash</h1>
         </Wrapper>
     );
 }

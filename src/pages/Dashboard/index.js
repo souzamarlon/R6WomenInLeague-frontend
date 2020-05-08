@@ -4,7 +4,6 @@ import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
 
 import { Container, Content, CardList, ButtonSwitchPages } from './styles';
 
-import SearchTool from '~/components/SearchTool';
 import Card from '~/components/Card';
 
 import api from '~/services/api';
@@ -35,13 +34,6 @@ export default function Dashboard() {
 
     return (
         <Container>
-            <ButtonSwitchPages
-                disabled={page < 1}
-                onClick={() => handlePage('back')}
-            >
-                <KeyboardArrowLeft style={{ fontSize: 44 }} />
-            </ButtonSwitchPages>
-
             <Content>
                 <CardList>
                     {r6Data.map((item) => (
@@ -49,6 +41,13 @@ export default function Dashboard() {
                     ))}
                 </CardList>
             </Content>
+
+            <ButtonSwitchPages
+                disabled={page < 1}
+                onClick={() => handlePage('back')}
+            >
+                <KeyboardArrowLeft style={{ fontSize: 44 }} />
+            </ButtonSwitchPages>
 
             <ButtonSwitchPages
                 disabled={r6Data.length <= 1}
