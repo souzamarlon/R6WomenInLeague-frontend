@@ -6,8 +6,8 @@ import {
     Container,
     Content,
     CardList,
-    MenuContainer,
     Menu,
+    SwitchButton,
     ButtonSwitchPages,
 } from './styles';
 
@@ -18,6 +18,8 @@ import api from '~/services/api';
 export default function Dashboard() {
     const [r6Data, setR6Data] = useState([]);
     const [page, setPage] = useState(1);
+    const [myFriends, setMyFriends] = useState(true);
+    const [request, setRequest] = useState(false);
 
     useEffect(() => {
         async function SearchFun() {
@@ -38,10 +40,27 @@ export default function Dashboard() {
         // const count = action === 'back' ? page - 1 : page + 1;
         setPage(action === 'back' ? page - 1 : page + 1);
     }
+    console.tron.log('t', !!request);
 
     return (
         <Container>
-            <Menu />
+            <Menu>
+                <SwitchButton
+                    onClick={() => setMyFriends(true) || setRequest(false)}
+                >
+                    <span className={myFriends ? 'active' : 'notActive'}>
+                        My Friends
+                    </span>
+                </SwitchButton>
+                <line />
+                <SwitchButton
+                    onClick={() => setRequest(true) || setMyFriends(false)}
+                >
+                    <span className={request ? 'active' : 'notActive'}>
+                        Friend Requests
+                    </span>
+                </SwitchButton>
+            </Menu>
             <Content>
                 <CardList>
                     {r6Data.map((item) => (
