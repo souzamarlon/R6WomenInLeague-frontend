@@ -55,13 +55,14 @@ export default function Dashboard() {
         // const count = action === 'back' ? page - 1 : page + 1;
         setPage(action === 'back' ? page - 1 : page + 1);
     }
-    console.tron.log('t', r6Data);
 
     return (
         <Container>
             <Menu>
                 <SwitchButton
-                    onClick={() => setMyFriends(true) || setRequest(false)}
+                    onClick={() =>
+                        setMyFriends(true) || setRequest(false) || setPage(1)
+                    }
                 >
                     <span className={myFriends ? 'active' : 'notActive'}>
                         My Friends
@@ -69,7 +70,9 @@ export default function Dashboard() {
                 </SwitchButton>
                 <line />
                 <SwitchButton
-                    onClick={() => setRequest(true) || setMyFriends(false)}
+                    onClick={() =>
+                        setRequest(true) || setMyFriends(false) || setPage(1)
+                    }
                 >
                     <span className={request ? 'active' : 'notActive'}>
                         Friend Requests
