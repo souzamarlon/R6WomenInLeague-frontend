@@ -38,6 +38,7 @@ export const Container = styled.div`
     border: 0;
     border-radius: 10px;
 `;
+
 export const Content = styled.div`
     width: 100%;
     max-width: 315px;
@@ -119,7 +120,7 @@ export const Content = styled.div`
 export const Photo = styled.div`
     position: absolute;
     bottom: 0;
-    width: 100%;
+    /* width: 100%; */
     padding-bottom: 2px;
     padding-right: 5px;
     text-align: right;
