@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
+import { useSelector } from 'react-redux';
 
 import {
     Container,
@@ -21,10 +22,13 @@ export default function Dashboard() {
     const [myFriends, setMyFriends] = useState(true);
     const [request, setRequest] = useState(false);
 
+    const { id } = useSelector((state) => state.user.profile);
+
     useEffect(() => {
         async function SearchFun() {
-            const response = await api.get(`users`, {
+            const response = await api.get(`friendship`, {
                 params: {
+                    accepted: true,
                     page,
                     per_page: 14,
                 },
@@ -40,7 +44,7 @@ export default function Dashboard() {
         // const count = action === 'back' ? page - 1 : page + 1;
         setPage(action === 'back' ? page - 1 : page + 1);
     }
-    console.tron.log('t', !!request);
+    console.tron.log('t', r6Data);
 
     return (
         <Container>
@@ -64,7 +68,14 @@ export default function Dashboard() {
             <Content>
                 <CardList>
                     {r6Data.map((item) => (
-                        <Card key={item.id} dataR6={item} />
+                        <Card
+                            key={item.id}
+                            dataR6={
+                                item.user_friend === id
+                                    ? item.user
+                                    : item.friend
+                            }
+                        />
                     ))}
                 </CardList>
             </Content>
