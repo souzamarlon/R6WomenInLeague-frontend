@@ -46,9 +46,6 @@ export const Menu = styled.div`
 
 export const SwitchButton = styled.button`
     width: 100px;
-    /* padding-top: 5px; */
-    font-weight: bold;
-    font-size: 12px;
 
     border: 0;
     border-radius: 20px;
@@ -65,9 +62,13 @@ export const SwitchButton = styled.button`
     .notActive {
         color: #000;
         opacity: 0.6;
+        font-weight: bold;
+        font-size: 12px;
     }
 
     .active {
+        font-weight: bold;
+        font-size: 12px;
         color: #fff;
     }
 `;
