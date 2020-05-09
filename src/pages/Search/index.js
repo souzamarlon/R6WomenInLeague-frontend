@@ -52,7 +52,6 @@ export default function Search() {
         // const count = action === 'back' ? page - 1 : page + 1;
         setPage(action === 'back' ? page - 1 : page + 1);
     }
-    console.tron.log(playerData);
 
     return (
         <Container>

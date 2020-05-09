@@ -71,14 +71,16 @@ export const Content = styled.div`
             margin-top: 20px;
             transition: background 0.2s;
             &:hover {
-                background: ${darken(0.03, 'rgba(255, 255, 255, 0.92)')};
+                background: ${darken(0.03, 'rgba(255, 255, 255, 0.70)')};
             }
         }
 
         a.signUpGoBack {
-            padding-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 45px;
-            background: rgba(4, 251, 162, 0.4);
+            background: rgba(4, 251, 162, 0.5);
             letter-spacing: 0.1em;
             color: #000;
             border: 0;
