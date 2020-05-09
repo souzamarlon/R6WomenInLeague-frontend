@@ -26,9 +26,20 @@ export default function Dashboard() {
 
     useEffect(() => {
         async function SearchFun() {
+            if (myFriends) {
+                const response = await api.get(`friendship`, {
+                    params: {
+                        accepted: true,
+                        page,
+                        per_page: 14,
+                    },
+                });
+
+                return setR6Data(response.data);
+            }
+
             const response = await api.get(`friendship`, {
                 params: {
-                    accepted: true,
                     page,
                     per_page: 14,
                 },
@@ -38,7 +49,7 @@ export default function Dashboard() {
         }
 
         SearchFun();
-    }, [page]);
+    }, [page, myFriends, request]);
 
     function handlePage(action) {
         // const count = action === 'back' ? page - 1 : page + 1;
@@ -87,7 +98,7 @@ export default function Dashboard() {
             </ButtonSwitchPages>
 
             <ButtonSwitchPages
-                disabled={r6Data.length <= 1}
+                disabled={r6Data.length < 1}
                 onClick={() => handlePage('next')}
             >
                 <KeyboardArrowRight style={{ fontSize: 44 }} />
