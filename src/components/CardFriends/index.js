@@ -103,22 +103,18 @@ export default function CardFriends({ dataR6 }) {
                 trigger={
                     <button type="button" className="more-button">
                         <div className="iconMoreHoriz">
-                            <MoreHoriz color="secondary" />
+                            <MoreHoriz color="primary" fontSize="large" />
                         </div>
                     </button>
                 }
                 // position="bottom center"
                 on="hover"
                 contentStyle={{
-                    width: '4.81vw',
+                    width: '4.41vw',
                     borderRadius: '5%',
                 }}
             >
-                <button type="button" className="more-button">
-                    <div className="iconMoreHoriz">
-                        <MoreHoriz color="secondary" />
-                    </div>
-                </button>
+                <MoreHoriz color="secondary" />
             </Popup>
 
             <h1>{dataR6.name}</h1>
