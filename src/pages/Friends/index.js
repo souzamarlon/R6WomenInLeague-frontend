@@ -12,7 +12,7 @@ import {
     ButtonSwitchPages,
 } from './styles';
 
-import Card from '~/components/Card';
+import Card from '~/components/CardFriends';
 
 import api from '~/services/api';
 

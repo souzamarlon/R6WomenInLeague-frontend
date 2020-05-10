@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { MoreHoriz } from '@material-ui/icons';
+import Popup from 'reactjs-popup';
 import api from '~/services/api';
 
 import { Content, Avatar } from './styles';
 
-export default function Card({ dataR6 }) {
+export default function CardFriends({ dataR6 }) {
     const [playerData, setPlayerData] = useState([{}]);
 
     useEffect(() => {
@@ -74,7 +76,7 @@ export default function Card({ dataR6 }) {
             key={dataR6.id}
             status_ranked={dataR6.ranked}
             status_competition={dataR6.competition}
-            onClick={() => addFriend(dataR6.id)}
+            // onClick={() => addFriend(dataR6.id)}
         >
             <Avatar>
                 <img
@@ -96,10 +98,33 @@ export default function Card({ dataR6 }) {
                     }
                 />
             </Avatar>
+            <Popup
+                key={dataR6.id}
+                trigger={
+                    <button type="button" className="more-button">
+                        <div className="iconMoreHoriz">
+                            <MoreHoriz color="secondary" />
+                        </div>
+                    </button>
+                }
+                // position="bottom center"
+                on="hover"
+                contentStyle={{
+                    width: '4.81vw',
+                    borderRadius: '5%',
+                }}
+            >
+                <button type="button" className="more-button">
+                    <div className="iconMoreHoriz">
+                        <MoreHoriz color="secondary" />
+                    </div>
+                </button>
+            </Popup>
 
             <h1>{dataR6.name}</h1>
             <h2>{`Play Style is ${dataR6.play_style}.`}</h2>
             <h2>Available to play:</h2>
+
             <div className="ranked">RANKED</div>
             <div className="competition">CHAMPIONSHIP</div>
             <div className="times">{dataR6.times}</div>
