@@ -3,10 +3,11 @@ import { toast } from 'react-toastify';
 import { MoreHoriz } from '@material-ui/icons';
 import Popup from 'reactjs-popup';
 import api from '~/services/api';
+import history from '~/services/history';
 
-import { Content, Avatar } from './styles';
+import { Content, Avatar, PopupOptions } from './styles';
 
-export default function CardFriends({ dataR6 }) {
+export default function CardFriends({ cardId, dataR6 }) {
     const [playerData, setPlayerData] = useState([{}]);
 
     useEffect(() => {
@@ -61,13 +62,16 @@ export default function CardFriends({ dataR6 }) {
         getPlayerData();
     }, [dataR6]);
 
-    async function addFriend(user_friend) {
+    async function removeFriend(id) {
         try {
-            await api.post('/friendship', { user_friend });
+            if (window.confirm(`Are you sure to remove ${dataR6.name}?`)) {
+                await api.delete(`/friendship/${id}`);
 
-            return toast.success(`Added ${dataR6.name} successfully`);
+                toast.success(`Removed ${dataR6.name} successfully`);
+                history.push('/friends');
+            }
         } catch (err) {
-            return toast.error('Failure to add your friend!');
+            toast.error('Failure to remove your friend!');
         }
     }
 
@@ -110,11 +114,24 @@ export default function CardFriends({ dataR6 }) {
                 // position="bottom center"
                 on="hover"
                 contentStyle={{
-                    width: '4.41vw',
+                    width: '3.01vw',
                     borderRadius: '5%',
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    border: 0,
                 }}
             >
-                <MoreHoriz color="secondary" />
+                <PopupOptions>
+                    <button
+                        type="button"
+                        className="options"
+                        onClick={() => removeFriend(cardId)}
+                    >
+                        Remove
+                    </button>
+                    <button type="button" className="options">
+                        Expose fake
+                    </button>
+                </PopupOptions>
             </Popup>
 
             <h1>{dataR6.name}</h1>

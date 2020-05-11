@@ -130,3 +130,13 @@ export const Avatar = styled.div`
         height: 70px;
     }
 `;
+
+export const PopupOptions = styled.div`
+    .options {
+        margin-top: 4px;
+        border: 0;
+        background: transparent;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+        width: 100%;
+    }
+`;

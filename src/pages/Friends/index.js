@@ -89,6 +89,7 @@ export default function Dashboard() {
                                     ? item.user
                                     : item.friend
                             }
+                            cardId={item.id}
                         />
                     ))}
                 </CardList>
