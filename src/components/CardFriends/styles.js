@@ -134,9 +134,10 @@ export const Avatar = styled.div`
 export const PopupOptions = styled.div`
     .options {
         margin-top: 4px;
+        color: #999;
         border: 0;
         background: transparent;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         width: 100%;
     }
 `;

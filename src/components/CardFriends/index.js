@@ -75,6 +75,19 @@ export default function CardFriends({ cardId, dataR6 }) {
         }
     }
 
+    async function exposeFake(id) {
+        try {
+            if (window.confirm(`Are you sure to report ${dataR6.name}?`)) {
+                await api.put(`/friendship/${id}`, { expose_fake: true });
+
+                toast.success(`Reported ${dataR6.name} successfully`);
+                history.push('/friends');
+            }
+        } catch (err) {
+            toast.error('Failure to remove your friend!');
+        }
+    }
+
     return (
         <Content
             key={dataR6.id}
@@ -114,9 +127,10 @@ export default function CardFriends({ cardId, dataR6 }) {
                 // position="bottom center"
                 on="hover"
                 contentStyle={{
-                    width: '3.01vw',
+                    width: '3.50vw',
                     borderRadius: '5%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    marginTop: 2,
+                    backgroundColor: 'rgba(255, 255, 255, 1)',
                     border: 0,
                 }}
             >
@@ -128,8 +142,12 @@ export default function CardFriends({ cardId, dataR6 }) {
                     >
                         Remove
                     </button>
-                    <button type="button" className="options">
-                        Expose fake
+                    <button
+                        type="button"
+                        className="options"
+                        onClick={() => exposeFake(cardId)}
+                    >
+                        Report a fake
                     </button>
                 </PopupOptions>
             </Popup>
