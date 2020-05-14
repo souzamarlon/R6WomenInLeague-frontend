@@ -141,3 +141,19 @@ export const PopupOptions = styled.div`
         width: 100%;
     }
 `;
+
+export const AddRemove = styled.div`
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+
+    .addButton {
+        border-radius: 50%;
+        border: 2;
+        background: #fff;
+        width: 50px;
+        height: 50px;
+        padding-top: 5px;
+        /* align-self: center; */
+    }
+`;

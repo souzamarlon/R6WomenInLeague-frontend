@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { MoreHoriz } from '@material-ui/icons';
+import { MoreHoriz, Favorite, ThumbDown } from '@material-ui/icons';
+import { green } from '@material-ui/core/colors';
 import Popup from 'reactjs-popup';
 import api from '~/services/api';
 import history from '~/services/history';
 
-import { Content, Avatar, PopupOptions } from './styles';
+import { Content, Avatar, PopupOptions, AddRemove } from './styles';
 
 export default function CardFriends({ cardId, dataR6 }) {
     const [playerData, setPlayerData] = useState([{}]);
@@ -75,7 +76,7 @@ export default function CardFriends({ cardId, dataR6 }) {
         }
     }
 
-    async function exposeFake(id) {
+    async function reportFake(id) {
         try {
             if (window.confirm(`Are you sure to report ${dataR6.name}?`)) {
                 await api.put(`/friendship/${id}`, { expose_fake: true });
@@ -145,7 +146,7 @@ export default function CardFriends({ cardId, dataR6 }) {
                     <button
                         type="button"
                         className="options"
-                        onClick={() => exposeFake(cardId)}
+                        onClick={() => reportFake(cardId)}
                     >
                         Report a fake
                     </button>
@@ -160,6 +161,15 @@ export default function CardFriends({ cardId, dataR6 }) {
             <div className="competition">CHAMPIONSHIP</div>
             <div className="times">{dataR6.times}</div>
             <div className="region">{dataR6.region}</div>
+
+            <AddRemove>
+                <button type="button" className="addButton">
+                    <ThumbDown color="secondary" style={{ fontSize: 40 }} />
+                </button>
+                <button type="button" className="addButton">
+                    <Favorite style={{ fontSize: 40, color: green[500] }} />
+                </button>
+            </AddRemove>
         </Content>
     );
 }
