@@ -59,9 +59,9 @@ export default function Card({ dataR6 }) {
         getPlayerData();
     }, [dataR6]);
 
-    async function addFriend(user_friend) {
+    async function addFriend(id) {
         try {
-            await api.post('/friendship', { user_friend });
+            await api.post(`/friendship/${id}`);
 
             return toast.success(`Added ${dataR6.name} successfully`);
         } catch (err) {

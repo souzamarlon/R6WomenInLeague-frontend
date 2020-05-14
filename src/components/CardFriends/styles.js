@@ -146,14 +146,25 @@ export const AddRemove = styled.div`
     flex-direction: row;
     display: flex;
     justify-content: space-between;
+    margin: 0 5px;
 
     .addButton {
         border-radius: 50%;
-        border: 2;
-        background: #fff;
-        width: 50px;
-        height: 50px;
+        border: 0;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.5);
+        width: 45px;
+        height: 45px;
         padding-top: 5px;
-        /* align-self: center; */
+        margin-top: 40px;
+
+        &:hover {
+            background: ${darken(0.2, '#fff')};
+        }
     }
+`;
+
+export const PlayerInfo = styled.div`
+    flex-direction: column;
+    /* display: flex; */
 `;

@@ -6,7 +6,7 @@ import Popup from 'reactjs-popup';
 import api from '~/services/api';
 import history from '~/services/history';
 
-import { Content, Avatar, PopupOptions, AddRemove } from './styles';
+import { Content, Avatar, PopupOptions, AddRemove, PlayerInfo } from './styles';
 
 export default function CardFriends({ cardId, dataR6 }) {
     const [playerData, setPlayerData] = useState([{}]);
@@ -89,12 +89,26 @@ export default function CardFriends({ cardId, dataR6 }) {
         }
     }
 
+    async function acceptFriend(id) {
+        try {
+            if (window.confirm(`Are you sure to accept ${dataR6.name}?`)) {
+                await api.put(`/friendship/${id}`, { accepted: true });
+
+                toast.success(`Accepted ${dataR6.name} successfully`);
+                history.push('/friends');
+            }
+        } catch (err) {
+            toast.error('Failure to accept your friend!');
+        }
+    }
+
+    console.tron.log(dataR6);
+
     return (
         <Content
             key={dataR6.id}
             status_ranked={dataR6.ranked}
             status_competition={dataR6.competition}
-            // onClick={() => addFriend(dataR6.id)}
         >
             <Avatar>
                 <img
@@ -157,17 +171,27 @@ export default function CardFriends({ cardId, dataR6 }) {
             <h2>{`Play Style is ${dataR6.play_style}.`}</h2>
             <h2>Available to play:</h2>
 
-            <div className="ranked">RANKED</div>
-            <div className="competition">CHAMPIONSHIP</div>
-            <div className="times">{dataR6.times}</div>
-            <div className="region">{dataR6.region}</div>
-
             <AddRemove>
-                <button type="button" className="addButton">
-                    <ThumbDown color="secondary" style={{ fontSize: 40 }} />
+                <button
+                    type="button"
+                    className="addButton"
+                    onClick={() => removeFriend(cardId)}
+                >
+                    <ThumbDown color="secondary" style={{ fontSize: 35 }} />
                 </button>
-                <button type="button" className="addButton">
-                    <Favorite style={{ fontSize: 40, color: green[500] }} />
+                <PlayerInfo>
+                    <div className="ranked">RANKED</div>
+                    <div className="competition">CHAMPIONSHIP</div>
+                    <div className="times">{dataR6.times}</div>
+                    <div className="region">{dataR6.region}</div>
+                </PlayerInfo>
+
+                <button
+                    type="button"
+                    className="addButton"
+                    onClick={() => acceptFriend(cardId)}
+                >
+                    <Favorite style={{ fontSize: 37, color: green[500] }} />
                 </button>
             </AddRemove>
         </Content>
