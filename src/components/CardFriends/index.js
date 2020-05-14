@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { MoreHoriz, Favorite, ThumbDown } from '@material-ui/icons';
+import {
+    MoreHoriz,
+    Favorite,
+    ThumbDown,
+    HourglassFull,
+} from '@material-ui/icons';
 import { green } from '@material-ui/core/colors';
 import Popup from 'reactjs-popup';
 import api from '~/services/api';
@@ -8,7 +13,7 @@ import history from '~/services/history';
 
 import { Content, Avatar, PopupOptions, AddRemove, PlayerInfo } from './styles';
 
-export default function CardFriends({ cardId, dataR6 }) {
+export default function CardFriends({ cardId, dataR6, allData }) {
     const [playerData, setPlayerData] = useState([{}]);
 
     useEffect(() => {
@@ -102,7 +107,7 @@ export default function CardFriends({ cardId, dataR6 }) {
         }
     }
 
-    console.tron.log(dataR6);
+    console.tron.log(allData);
 
     return (
         <Content
@@ -171,29 +176,48 @@ export default function CardFriends({ cardId, dataR6 }) {
             <h2>{`Play Style is ${dataR6.play_style}.`}</h2>
             <h2>Available to play:</h2>
 
-            <AddRemove>
-                <button
-                    type="button"
-                    className="addButton"
-                    onClick={() => removeFriend(cardId)}
-                >
-                    <ThumbDown color="secondary" style={{ fontSize: 35 }} />
-                </button>
-                <PlayerInfo>
+            {allData.accepted ? (
+                <>
                     <div className="ranked">RANKED</div>
                     <div className="competition">CHAMPIONSHIP</div>
                     <div className="times">{dataR6.times}</div>
                     <div className="region">{dataR6.region}</div>
-                </PlayerInfo>
-
-                <button
-                    type="button"
-                    className="addButton"
-                    onClick={() => acceptFriend(cardId)}
-                >
-                    <Favorite style={{ fontSize: 37, color: green[500] }} />
-                </button>
-            </AddRemove>
+                </>
+            ) : (
+                <AddRemove>
+                    <button
+                        type="button"
+                        className="addButton"
+                        onClick={() => removeFriend(cardId)}
+                    >
+                        <ThumbDown color="secondary" style={{ fontSize: 35 }} />
+                    </button>
+                    <PlayerInfo>
+                        <div className="ranked">RANKED</div>
+                        <div className="competition">CHAMPIONSHIP</div>
+                        <div className="times">{dataR6.times}</div>
+                        <div className="region">{dataR6.region}</div>
+                    </PlayerInfo>
+                    {allData.user.id === dataR6.id ? (
+                        <button
+                            type="button"
+                            className="addButton"
+                            onClick={() => acceptFriend(cardId)}
+                        >
+                            <Favorite
+                                style={{ fontSize: 37, color: green[500] }}
+                            />
+                        </button>
+                    ) : (
+                        <button type="button" className="addButton" disabled>
+                            <HourglassFull
+                                color="disabled"
+                                style={{ fontSize: 34 }}
+                            />
+                        </button>
+                    )}
+                </AddRemove>
+            )}
         </Content>
     );
 }

@@ -90,6 +90,7 @@ export default function Dashboard() {
                                     : item.friend
                             }
                             cardId={item.id}
+                            allData={item}
                         />
                     ))}
                 </CardList>
