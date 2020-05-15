@@ -11,7 +11,14 @@ import Popup from 'reactjs-popup';
 import api from '~/services/api';
 import history from '~/services/history';
 
-import { Content, Avatar, PopupOptions, AddRemove, PlayerInfo } from './styles';
+import {
+    Content,
+    Avatar,
+    PopupOptions,
+    AddRemove,
+    AvailableInfo,
+    PlayerInfo,
+} from './styles';
 
 export default function CardFriends({ cardId, dataR6, allData }) {
     const [playerData, setPlayerData] = useState([{}]);
@@ -107,8 +114,6 @@ export default function CardFriends({ cardId, dataR6, allData }) {
         }
     }
 
-    console.tron.log(allData);
-
     return (
         <Content
             key={dataR6.id}
@@ -173,50 +178,68 @@ export default function CardFriends({ cardId, dataR6, allData }) {
             </Popup>
 
             <h1>{dataR6.name}</h1>
-            <h2>{`Play Style is ${dataR6.play_style}.`}</h2>
-            <h2>Available to play:</h2>
 
             {allData.accepted ? (
                 <>
-                    <div className="ranked">RANKED</div>
-                    <div className="competition">CHAMPIONSHIP</div>
-                    <div className="times">{dataR6.times}</div>
-                    <div className="region">{dataR6.region}</div>
-                </>
-            ) : (
-                <AddRemove>
-                    <button
-                        type="button"
-                        className="addButton"
-                        onClick={() => removeFriend(cardId)}
-                    >
-                        <ThumbDown color="secondary" style={{ fontSize: 35 }} />
-                    </button>
+                    <h2 className="playerInfo">{`Uplay: ${dataR6.uplay}.`}</h2>
+                    {dataR6.discord_user ? (
+                        <h2 className="playerInfo">{`Discord: ${dataR6.discord_user}.`}</h2>
+                    ) : null}
+                    <h2 className="playAvailableInfo">{`Play Style is ${dataR6.play_style}.`}</h2>
+                    <h2 className="playAvailableInfo">Available to play:</h2>
                     <PlayerInfo>
                         <div className="ranked">RANKED</div>
                         <div className="competition">CHAMPIONSHIP</div>
                         <div className="times">{dataR6.times}</div>
                         <div className="region">{dataR6.region}</div>
                     </PlayerInfo>
-                    {allData.user.id === dataR6.id ? (
+                </>
+            ) : (
+                <>
+                    <h2 className="playAvailableInfo">{`Play Style is ${dataR6.play_style}.`}</h2>
+                    <h2 className="playAvailableInfo">Available to play:</h2>
+                    <AddRemove>
                         <button
                             type="button"
                             className="addButton"
-                            onClick={() => acceptFriend(cardId)}
+                            onClick={() => removeFriend(cardId)}
                         >
-                            <Favorite
-                                style={{ fontSize: 37, color: green[500] }}
+                            <ThumbDown
+                                color="secondary"
+                                style={{ fontSize: 35 }}
                             />
                         </button>
-                    ) : (
-                        <button type="button" className="addButton" disabled>
-                            <HourglassFull
-                                color="disabled"
-                                style={{ fontSize: 34 }}
-                            />
-                        </button>
-                    )}
-                </AddRemove>
+
+                        <AvailableInfo>
+                            <div className="ranked">RANKED</div>
+                            <div className="competition">CHAMPIONSHIP</div>
+                            <div className="times">{dataR6.times}</div>
+                            <div className="region">{dataR6.region}</div>
+                        </AvailableInfo>
+                        {allData.user.id === dataR6.id ? (
+                            <button
+                                type="button"
+                                className="addButton"
+                                onClick={() => acceptFriend(cardId)}
+                            >
+                                <Favorite
+                                    style={{ fontSize: 37, color: green[500] }}
+                                />
+                            </button>
+                        ) : (
+                            <button
+                                type="button"
+                                className="addButton"
+                                disabled
+                            >
+                                <HourglassFull
+                                    color="disabled"
+                                    style={{ fontSize: 34 }}
+                                />
+                            </button>
+                        )}
+                    </AddRemove>
+                </>
             )}
         </Content>
     );

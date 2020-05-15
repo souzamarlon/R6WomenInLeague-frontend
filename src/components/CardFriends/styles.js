@@ -28,10 +28,16 @@ export const Content = styled.div`
         color: #fff;
         font-size: 1.4rem;
     }
-    h2 {
-        padding-top: 10px;
-        color: rgba(250, 248, 248, 0.56);
+
+    .playerInfo {
+        font-size: 1rem;
+        color: rgba(255, 25, 248, 0.66);
+        margin-top: 2px;
+    }
+    .playAvailableInfo {
         font-size: 1.2rem;
+        padding-top: 5px;
+        color: rgba(250, 248, 248, 0.56);
     }
 
     div.ranked {
@@ -170,7 +176,13 @@ export const AddRemove = styled.div`
     }
 `;
 
-export const PlayerInfo = styled.div`
+export const AvailableInfo = styled.div`
     flex-direction: column;
-    /* display: flex; */
+`;
+
+export const PlayerInfo = styled.div`
+    /* flex-direction: row;
+    display: flex; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 `;
