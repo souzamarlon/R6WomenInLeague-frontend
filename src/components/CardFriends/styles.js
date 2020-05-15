@@ -31,13 +31,15 @@ export const Content = styled.div`
 
     .playerInfo {
         font-size: 1rem;
-        color: rgba(255, 25, 248, 0.66);
+        /* color: rgba(255, 25, 248, 0.66); */
+        color: rgba(255, 255, 25, 0.66);
         margin-top: 2px;
     }
     .playAvailableInfo {
         font-size: 1.2rem;
         padding-top: 5px;
         color: rgba(250, 248, 248, 0.56);
+        overflow: hidden;
     }
 
     div.ranked {
@@ -180,9 +182,11 @@ export const AvailableInfo = styled.div`
     flex-direction: column;
 `;
 
-export const PlayerInfo = styled.div`
+export const PlayerInfo = styled.ul`
     /* flex-direction: row;
     display: flex; */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: none;
+    align-items: stretch;
 `;

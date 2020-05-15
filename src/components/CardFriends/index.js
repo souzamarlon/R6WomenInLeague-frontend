@@ -8,6 +8,8 @@ import {
 } from '@material-ui/icons';
 import { green } from '@material-ui/core/colors';
 import Popup from 'reactjs-popup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDiscord, faUplay } from '@fortawesome/free-brands-svg-icons';
 import api from '~/services/api';
 import history from '~/services/history';
 
@@ -183,7 +185,18 @@ export default function CardFriends({ cardId, dataR6, allData }) {
                 <>
                     <h2 className="playerInfo">{`Uplay: ${dataR6.uplay}.`}</h2>
                     {dataR6.discord_user ? (
-                        <h2 className="playerInfo">{`Discord: ${dataR6.discord_user}.`}</h2>
+                        <>
+                            <h2 className="playerInfo">
+                                <FontAwesomeIcon
+                                    icon={faDiscord}
+                                    style={{
+                                        color: '#FFF',
+                                        fontSize: 16,
+                                    }}
+                                />
+                                {`:${dataR6.discord_user}`}
+                            </h2>
+                        </>
                     ) : null}
                     <h2 className="playAvailableInfo">{`Play Style is ${dataR6.play_style}.`}</h2>
                     <h2 className="playAvailableInfo">Available to play:</h2>
