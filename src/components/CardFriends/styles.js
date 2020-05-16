@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 
-export const Content = styled.div`
+export const Container = styled.div`
     width: 195px;
     height: 347px;
     background: rgba(10, 10, 10, 0.5);
@@ -29,12 +29,6 @@ export const Content = styled.div`
         font-size: 1.4rem;
     }
 
-    .playerInfo {
-        font-size: 1rem;
-        /* color: rgba(255, 25, 248, 0.66); */
-        color: rgba(255, 255, 25, 0.66);
-        margin-top: 2px;
-    }
     .playAvailableInfo {
         font-size: 1.2rem;
         padding-top: 5px;
@@ -189,4 +183,34 @@ export const PlayerInfo = styled.ul`
     grid-template-columns: repeat(2, 1fr);
     grid-row-gap: none;
     align-items: stretch;
+`;
+
+export const AlignUplayIcon = styled.div`
+    flex-direction: row;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+
+    .playerInfo {
+        font-size: 1rem;
+        /* color: rgba(255, 25, 248, 0.66); */
+        color: rgba(255, 255, 25, 0.66);
+        padding-top: 2px;
+        background: rgba(10, 10, 10, 0.2);
+    }
+`;
+
+export const AlignDiscordIcon = styled.div`
+    flex-direction: row;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+
+    .playerInfo {
+        font-size: 1rem;
+        /* color: rgba(255, 25, 248, 0.66); */
+        color: rgba(255, 255, 25, 0.66);
+        padding-top: 2px;
+        background: rgba(10, 10, 10, 0.2);
+    }
 `;

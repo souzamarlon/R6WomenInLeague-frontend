@@ -5,21 +5,25 @@ import {
     Favorite,
     ThumbDown,
     HourglassFull,
+    SportsEsports,
 } from '@material-ui/icons';
 import { green } from '@material-ui/core/colors';
 import Popup from 'reactjs-popup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDiscord, faUplay } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import api from '~/services/api';
 import history from '~/services/history';
 
 import {
+    Container,
     Content,
     Avatar,
     PopupOptions,
     AddRemove,
     AvailableInfo,
     PlayerInfo,
+    AlignUplayIcon,
+    AlignDiscordIcon,
 } from './styles';
 
 export default function CardFriends({ cardId, dataR6, allData }) {
@@ -117,7 +121,7 @@ export default function CardFriends({ cardId, dataR6, allData }) {
     }
 
     return (
-        <Content
+        <Container
             key={dataR6.id}
             status_ranked={dataR6.ranked}
             status_competition={dataR6.competition}
@@ -179,24 +183,33 @@ export default function CardFriends({ cardId, dataR6, allData }) {
                 </PopupOptions>
             </Popup>
 
-            <h1>{dataR6.name}</h1>
-
             {allData.accepted ? (
                 <>
-                    <h2 className="playerInfo">{`Uplay: ${dataR6.uplay}.`}</h2>
+                    <h1>{dataR6.name}</h1>
+
+                    <AlignUplayIcon>
+                        <SportsEsports
+                            style={{
+                                color: '#FFF',
+                                fontSize: 16,
+                            }}
+                        />
+                        <h2 className="playerInfo">{dataR6.uplay}</h2>
+                    </AlignUplayIcon>
+
                     {dataR6.discord_user ? (
-                        <>
+                        <AlignDiscordIcon>
+                            <FontAwesomeIcon
+                                icon={faDiscord}
+                                style={{
+                                    color: '#FFF',
+                                    fontSize: 16,
+                                }}
+                            />
                             <h2 className="playerInfo">
-                                <FontAwesomeIcon
-                                    icon={faDiscord}
-                                    style={{
-                                        color: '#FFF',
-                                        fontSize: 16,
-                                    }}
-                                />
                                 {`:${dataR6.discord_user}`}
                             </h2>
-                        </>
+                        </AlignDiscordIcon>
                     ) : null}
                     <h2 className="playAvailableInfo">{`Play Style is ${dataR6.play_style}.`}</h2>
                     <h2 className="playAvailableInfo">Available to play:</h2>
@@ -209,6 +222,7 @@ export default function CardFriends({ cardId, dataR6, allData }) {
                 </>
             ) : (
                 <>
+                    <h1>{dataR6.name}</h1>
                     <h2 className="playAvailableInfo">{`Play Style is ${dataR6.play_style}.`}</h2>
                     <h2 className="playAvailableInfo">Available to play:</h2>
                     <AddRemove>
@@ -254,6 +268,6 @@ export default function CardFriends({ cardId, dataR6, allData }) {
                     </AddRemove>
                 </>
             )}
-        </Content>
+        </Container>
     );
 }
