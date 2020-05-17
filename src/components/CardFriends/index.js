@@ -16,7 +16,6 @@ import history from '~/services/history';
 
 import {
     Container,
-    Content,
     Avatar,
     PopupOptions,
     AddRemove,

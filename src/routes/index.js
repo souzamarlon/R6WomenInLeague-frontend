@@ -9,6 +9,7 @@ import SignUp from '../pages/SignUp';
 import Dashboard from '../pages/Dashboard';
 import Search from '../pages/Search';
 import Friends from '../pages/Friends';
+import Profile from '../pages/Profile';
 
 export default function Routes() {
     return (
@@ -18,6 +19,7 @@ export default function Routes() {
             <Route path="/dashboard" exact component={Dashboard} isPrivate />
             <Route path="/search" exact component={Search} isPrivate />
             <Route path="/friends" exact component={Friends} isPrivate />
+            <Route path="/profile" exact component={Profile} isPrivate />
         </Switch>
     );
 }
