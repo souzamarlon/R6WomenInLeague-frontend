@@ -13,7 +13,7 @@ export function* updateProfile({ payload }) {
             email,
             ...(rest.oldPassword ? rest : {}),
         };
-        console.tron.log(profile);
+
         const response = yield call(api.put, 'users', profile);
 
         toast.success('Sucesso ao atualizar os dados!');

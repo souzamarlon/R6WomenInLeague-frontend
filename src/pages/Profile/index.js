@@ -19,10 +19,11 @@ import { signOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
 export default function Profile() {
-    const [defaultValue, setDefaultValue] = useState('South America');
     const [selectRegion, setSelectRegion] = useState([]);
+
+    const dispatch = useDispatch();
     const profile = useSelector((state) => state.user.profile);
-    const loading = useSelector((state) => state.auth.loading);
+    const { competition, ranked, region, play_style, times } = profile;
 
     const schema = Yup.object().shape({
         name: Yup.string().required('Missing name field'),
@@ -33,7 +34,17 @@ export default function Profile() {
         password: Yup.string().required('A senha é obrigatoria'),
     });
 
-    async function handleSubmit({ name, email, uplay, password }) {
+    async function handleSubmit({
+        name,
+        email,
+        uplay,
+        password,
+        competition,
+        ranked,
+        region,
+        play_style,
+        times,
+    }) {
         try {
             await api.get('/stats', {
                 params: {
@@ -43,19 +54,13 @@ export default function Profile() {
                 },
             });
 
-            const region = selectRegion.length ? selectRegion : defaultValue;
-
             // TODO - Check if it does not have another account using the same Email or Uplay Nickname.
-            // return dispatch(
-            //     signUpRequest(name, email, uplay, region, password)
-            // );
+            dispatch(
+                updateProfileRequest(name, email, uplay, region, password)
+            );
         } catch (err) {
             return toast.error('Uplay nickname not found!');
         }
-
-        // const playerInfo =
-        //     response.data.players[Object.keys(response.data.players)[0]];
-        // console.tron.log(playerInfo);
     }
 
     return (
@@ -66,27 +71,37 @@ export default function Profile() {
                     schema={schema}
                     onSubmit={handleSubmit}
                 >
-                    <p>NAME:</p>
+                    <p>Name:</p>
                     <Input
                         name="name"
                         type="name"
                         placeholder="Eliza Ash Cohen"
                     />
-                    <p>E-MAIL:</p>
+                    <p>E-mail:</p>
                     <Input
                         name="email"
                         type="email"
                         placeholder="exemplo@email.com"
                     />
-                    <p>UPLAY NICKNAME:</p>
+                    <p>Uplay Nickname:</p>
                     <Input name="uplay" placeholder="Ash" />
                     <p>Discord:</p>
                     <Input name="discord_user" placeholder="Ash" />
-                    <p>PASSWORD:</p>
+                    <p>Password:</p>
+                    <Input
+                        type="password"
+                        name="oldPassword"
+                        placeholder="Your current password"
+                    />
                     <Input
                         name="password"
                         type="password"
-                        placeholder="**********"
+                        placeholder="New password"
+                    />
+                    <Input
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirm password"
                     />
 
                     <p>AVAILABLE:</p>
@@ -106,7 +121,7 @@ export default function Profile() {
                                         options={booleanOptions}
                                         onChange={setSelectRegion}
                                         defaultOptions
-                                        defaultValue={defaultValue}
+                                        defaultValue={ranked}
                                         width="100px"
                                         height="20px"
                                     />
@@ -116,8 +131,8 @@ export default function Profile() {
                                         name="competition"
                                         options={booleanOptions}
                                         onChange={setSelectRegion}
-                                        defaultOptions
-                                        defaultValue={defaultValue}
+                                        // defaultOptions
+                                        defaultValue={competition}
                                         width="100px"
                                         height="20px"
                                     />
@@ -128,7 +143,7 @@ export default function Profile() {
                                         options={timesOptions}
                                         onChange={setSelectRegion}
                                         defaultOptions
-                                        defaultValue={defaultValue}
+                                        defaultValue={times}
                                         width="105px"
                                         height="20px"
                                     />
@@ -136,28 +151,28 @@ export default function Profile() {
                             </tr>
                         </tbody>
                     </AvailableRow>
-                    <p>PLAY STYLE:</p>
+                    <p>Play Style:</p>
                     <Select
                         name="play_style"
                         options={playStyleOptions}
                         onChange={setSelectRegion}
                         defaultOptions
-                        defaultValue={defaultValue}
+                        defaultValue={play_style}
                         height="30px"
                     />
 
-                    <p>YOUR REGION:</p>
+                    <p>Your Region:</p>
                     <Select
                         name="region"
                         options={regionOptions}
                         onChange={setSelectRegion}
                         defaultOptions
-                        defaultValue={defaultValue}
+                        defaultValue={region}
                         height="30px"
                     />
 
                     <button className="update" type="submit">
-                        {loading ? 'Carregando... ' : 'UPDATE'}
+                        UPDATE
                     </button>
                 </Form>
             </Content>

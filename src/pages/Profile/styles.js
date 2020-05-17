@@ -5,7 +5,7 @@ import { darken } from 'polished';
 export const Container = styled.div`
     background: rgba(27, 25, 28, 0.74);
     width: 400px;
-    height: 780px;
+    height: 815px;
     display: flex;
     margin: 10px auto;
 
@@ -28,7 +28,7 @@ export const Content = styled.div`
             border: 0.5px solid #eee;
             /* box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1); */
             border-radius: 4px;
-            height: 44px;
+            height: 40px;
             padding: 0 15px;
             color: #ffff;
             margin: 0 0 10px;
@@ -67,7 +67,7 @@ export const Content = styled.div`
 export const AvailableRow = styled.table`
     display: flex;
     flex-direction: column;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     border: 0;
 
     thead th {
@@ -82,7 +82,7 @@ export const AvailableRow = styled.table`
     }
     tbody td {
         text-align: center;
-        padding-top: 10px;
+        padding-top: 5px;
         /* height: 57px; */
         padding-right: 10px;
         border-radius: 4px;
