@@ -8,7 +8,7 @@ import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 import api from '~/services/api';
 import Select from '~/components/ReactSelect';
-
+import { regionOptions } from '~/components/ReactSelect/Data/data';
 import { signUpRequest } from '~/store/modules/auth/actions';
 
 // import { Container } from './styles';
@@ -27,15 +27,6 @@ export default function SignUp() {
     });
     const dispatch = useDispatch();
     const loading = useSelector((state) => state.auth.loading);
-
-    const options = [
-        { id: 1, value: 'Africa', label: 'Africa' },
-        { id: 2, value: 'Asia', label: 'Asia' },
-        { id: 3, value: 'Europe', label: 'Europe' },
-        { id: 4, value: 'North America', label: 'North America' },
-        { id: 5, value: 'Oceania', label: 'Oceania' },
-        { id: 6, value: 'South America', label: 'South America' },
-    ];
 
     async function handleSubmit({ name, email, uplay, password }) {
         try {
@@ -84,10 +75,11 @@ export default function SignUp() {
                 <p>YOUR REGION:</p>
                 <Select
                     name="region"
-                    options={options}
+                    options={regionOptions}
                     onChange={setSelectRegion}
                     defaultOptions
                     defaultValue={defaultValue}
+                    height="30px"
                 />
 
                 <button className="signIn" type="submit">

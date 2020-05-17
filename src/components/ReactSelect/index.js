@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 
 import { Container } from './styles';
 
-export default function ReactSelect({ options, onChange, defaultValue }) {
+export default function ReactSelect({
+    options,
+    onChange,
+    defaultValue,
+    width,
+    height,
+}) {
     const [selectRegion, setSelectRegion] = useState([]);
     const ref = useRef(null);
 
@@ -15,7 +21,7 @@ export default function ReactSelect({ options, onChange, defaultValue }) {
     const dot = () => ({
         alignItems: 'center',
         display: 'flex',
-        height: '39px',
+        height,
         fontSize: '12px',
         color: 'white',
     });
@@ -25,9 +31,10 @@ export default function ReactSelect({ options, onChange, defaultValue }) {
             ...styles,
             backgroundColor: 'rgba(255, 255, 255, 0.2)',
             color: '#ffff',
-            height: '44px',
+            height,
             paddingBottom: '20px',
             fontSize: '12px',
+            width,
         }),
 
         option: (styles) => {
