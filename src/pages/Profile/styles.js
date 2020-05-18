@@ -37,21 +37,6 @@ export const Content = styled.div`
             }
         }
 
-        button.update {
-            height: 45px;
-            background: rgba(255, 255, 255, 0.92);
-            letter-spacing: 0.1em;
-            color: #000;
-            border: 0;
-            border-radius: 25px;
-            font-size: 16px;
-            margin-top: 20px;
-            transition: background 0.2s;
-            &:hover {
-                background: ${darken(0.03, 'rgba(255, 255, 255, 0.70)')};
-            }
-        }
-
         p {
             display: flex;
             font-size: 14px;
@@ -86,5 +71,43 @@ export const AvailableRow = styled.table`
         /* height: 57px; */
         padding-right: 10px;
         border-radius: 4px;
+    }
+`;
+
+export const ButtonPosition = styled.div`
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button.update {
+        height: 40px;
+        width: 150px;
+        background: rgba(4, 251, 162, 0.5);
+        letter-spacing: 0.1em;
+        color: #000;
+        border: 0;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 20px;
+        transition: background 0.2s;
+        &:hover {
+            background: ${darken(0.03, 'rgba(4, 251, 162, 0.4)')};
+        }
+    }
+    button.signOut {
+        height: 40px;
+        width: 150px;
+        background: rgba(255, 3, 26, 0.61);
+        letter-spacing: 0.1em;
+        color: #fff;
+        border: 0;
+        border-radius: 25px;
+        font-size: 14px;
+        margin-top: 20px;
+        transition: background 0.2s;
+        &:hover {
+            background: ${darken(0.03, 'rgba(255, 3, 26, 0.81)')};
+        }
     }
 `;

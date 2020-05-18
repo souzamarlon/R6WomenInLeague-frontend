@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
-import { Container, Content, AvailableRow } from './styles';
+import { Container, Content, AvailableRow, ButtonPosition } from './styles';
 import api from '~/services/api';
 import Select from '~/components/ReactSelect';
 import {
@@ -91,6 +91,10 @@ export default function Profile() {
         } catch (err) {
             toast.error('Uplay nickname not found!');
         }
+    }
+
+    function handleSignOut() {
+        dispatch(signOut());
     }
 
     return (
@@ -224,10 +228,18 @@ export default function Profile() {
                         defaultValue={profile.play_style}
                         height="30px"
                     />
-
-                    <button className="update" type="submit">
-                        UPDATE
-                    </button>
+                    <ButtonPosition>
+                        <button
+                            className="signOut"
+                            type="button"
+                            onClick={handleSignOut}
+                        >
+                            Log Out
+                        </button>
+                        <button className="update" type="submit">
+                            UPDATE
+                        </button>
+                    </ButtonPosition>
                 </Form>
             </Content>
         </Container>
