@@ -18,8 +18,6 @@ export function* updateProfile({ payload }) {
             ...rest
         } = payload.data;
 
-        console.tron.log(payload.data);
-
         const profile = {
             name,
             email,

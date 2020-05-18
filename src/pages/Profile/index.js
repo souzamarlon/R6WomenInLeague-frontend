@@ -67,9 +67,8 @@ export default function Profile() {
             const { competition } = selectField;
             const { ranked } = selectField;
             const { region } = selectField;
-            const { play_style } = selectField.play_style.length
-                ? selectField.play_style
-                : profile;
+            const { play_style } =
+                selectField.play_style.length > 0 ? selectField : profile;
             const { times } = selectField;
 
             // TODO - Check if it does not have another account using the same Email or Uplay Nickname.
