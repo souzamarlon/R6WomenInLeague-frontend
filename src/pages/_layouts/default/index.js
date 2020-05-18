@@ -9,7 +9,7 @@ import { Wrapper, Title } from './styles';
 export default function DefaultLayout({ children }) {
     return (
         <Wrapper background={Background}>
-            <Title>R6 WOMEN IN LEAGUE</Title>
+            <Title>R6 WOMEN'S ALLIANCE</Title>
             <Header />
             {children}
 

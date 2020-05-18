@@ -109,11 +109,20 @@ export const Content = styled.div`
         }
     }
 
-    h1.welcome {
-        margin-bottom: 20px;
+    .welcome {
+        margin-bottom: 10px;
         font-size: 35px;
         color: #fff;
         letter-spacing: 0.1em;
+        text-align: left;
+    }
+
+    .welcomeText {
+        color: #fff;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        margin-bottom: 10px;
     }
 `;
 

@@ -9,7 +9,7 @@ export default function AuthLayout({ children }) {
     return (
         <Wrapper background={SignInPic}>
             <Box>
-                <Title>R6 WOMEN IN LEAGUE</Title>
+                <Title>R6 WOMEN'S ALLIANCE</Title>
                 <Container>
                     <Content>{children}</Content>
                 </Container>
