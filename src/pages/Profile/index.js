@@ -19,31 +19,41 @@ import { signOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
 export default function Profile() {
-    const [selectRegion, setSelectRegion] = useState([]);
+    const profile = useSelector((state) => state.user.profile);
+
+    const [selectField, setSelectField] = useState({
+        competition: profile.competition,
+        ranked: profile.ranked,
+        region: profile.region,
+        play_style: profile.play_style,
+        times: profile.times,
+    });
 
     const dispatch = useDispatch();
-    const profile = useSelector((state) => state.user.profile);
-    const { competition, ranked, region, play_style, times } = profile;
 
     const schema = Yup.object().shape({
-        name: Yup.string().required('Missing name field'),
+        name: Yup.string(),
         email: Yup.string()
             .email('Insira um e-mail válido')
             .required('O e-mail é obrigatório'),
         uplay: Yup.string(),
-        password: Yup.string().required('A senha é obrigatoria'),
+        competition: Yup.boolean(),
+        ranked: Yup.boolean(),
+        region: Yup.string(),
+        play_style: Yup.string(),
+        times: Yup.string(),
+        password: Yup.string(),
+        oldPassword: Yup.string(),
+        confirmPassword: Yup.string(),
     });
 
     async function handleSubmit({
         name,
         email,
         uplay,
+        oldPassword,
         password,
-        competition,
-        ranked,
-        region,
-        play_style,
-        times,
+        confirmPassword,
     }) {
         try {
             await api.get('/stats', {
@@ -54,12 +64,32 @@ export default function Profile() {
                 },
             });
 
+            const { competition } = selectField;
+            const { ranked } = selectField;
+            const { region } = selectField;
+            const { play_style } = selectField.play_style.length
+                ? selectField.play_style
+                : profile;
+            const { times } = selectField;
+
             // TODO - Check if it does not have another account using the same Email or Uplay Nickname.
-            dispatch(
-                updateProfileRequest(name, email, uplay, region, password)
-            );
+            const data = {
+                name,
+                email,
+                uplay,
+                competition,
+                ranked,
+                region,
+                play_style,
+                times,
+                oldPassword,
+                password,
+                confirmPassword,
+            };
+
+            dispatch(updateProfileRequest(data));
         } catch (err) {
-            return toast.error('Uplay nickname not found!');
+            toast.error('Uplay nickname not found!');
         }
     }
 
@@ -89,8 +119,8 @@ export default function Profile() {
                     <Input name="discord_user" placeholder="Ash" />
                     <p>Password:</p>
                     <Input
-                        type="password"
                         name="oldPassword"
+                        type="password"
                         placeholder="Your current password"
                     />
                     <Input
@@ -99,8 +129,8 @@ export default function Profile() {
                         placeholder="New password"
                     />
                     <Input
-                        type="password"
                         name="confirmPassword"
+                        type="password"
                         placeholder="Confirm password"
                     />
 
@@ -119,9 +149,14 @@ export default function Profile() {
                                     <Select
                                         name="ranked"
                                         options={booleanOptions}
-                                        onChange={setSelectRegion}
+                                        onChange={(value) =>
+                                            setSelectField({
+                                                ...selectField,
+                                                ranked: value,
+                                            })
+                                        }
                                         defaultOptions
-                                        defaultValue={ranked}
+                                        defaultValue={profile.ranked}
                                         width="100px"
                                         height="20px"
                                     />
@@ -130,9 +165,14 @@ export default function Profile() {
                                     <Select
                                         name="competition"
                                         options={booleanOptions}
-                                        onChange={setSelectRegion}
+                                        onChange={(value) =>
+                                            setSelectField({
+                                                ...selectField,
+                                                competition: value,
+                                            })
+                                        }
                                         // defaultOptions
-                                        defaultValue={competition}
+                                        defaultValue={profile.competition}
                                         width="100px"
                                         height="20px"
                                     />
@@ -141,9 +181,14 @@ export default function Profile() {
                                     <Select
                                         name="times"
                                         options={timesOptions}
-                                        onChange={setSelectRegion}
+                                        onChange={(value) =>
+                                            setSelectField({
+                                                ...selectField,
+                                                times: value,
+                                            })
+                                        }
                                         defaultOptions
-                                        defaultValue={times}
+                                        defaultValue={profile.times}
                                         width="105px"
                                         height="20px"
                                     />
@@ -151,23 +196,32 @@ export default function Profile() {
                             </tr>
                         </tbody>
                     </AvailableRow>
-                    <p>Play Style:</p>
-                    <Select
-                        name="play_style"
-                        options={playStyleOptions}
-                        onChange={setSelectRegion}
-                        defaultOptions
-                        defaultValue={play_style}
-                        height="30px"
-                    />
-
                     <p>Your Region:</p>
                     <Select
                         name="region"
                         options={regionOptions}
-                        onChange={setSelectRegion}
+                        onChange={(value) =>
+                            setSelectField({
+                                ...selectField,
+                                region: value,
+                            })
+                        }
                         defaultOptions
-                        defaultValue={region}
+                        defaultValue={profile.region}
+                        height="30px"
+                    />
+                    <p>Play Style:</p>
+                    <Select
+                        name="play_style"
+                        options={playStyleOptions}
+                        onChange={(item) =>
+                            setSelectField({
+                                ...selectField,
+                                play_style: item,
+                            })
+                        }
+                        defaultOptions
+                        defaultValue={profile.play_style}
                         height="30px"
                     />
 

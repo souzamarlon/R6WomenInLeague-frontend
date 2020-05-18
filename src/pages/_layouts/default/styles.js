@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    height: 103vh;
+    height: 109vh;
 
     background: url(${(props) => props.background});
     background-size: 100% 100%;

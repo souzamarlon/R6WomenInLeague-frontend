@@ -39,6 +39,7 @@ export function* signUp({ payload }) {
             region,
             password,
         });
+
         toast.success('Your account has been created successfully!');
 
         history.push('/');

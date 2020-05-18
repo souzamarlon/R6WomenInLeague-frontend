@@ -6,20 +6,38 @@ import { updateProfileSuccess, updateProfileFailure } from './actions';
 
 export function* updateProfile({ payload }) {
     try {
-        const { name, email, ...rest } = payload.data;
+        const {
+            name,
+            email,
+            uplay,
+            competition,
+            ranked,
+            region,
+            play_style,
+            times,
+            ...rest
+        } = payload.data;
+
+        console.tron.log(payload.data);
 
         const profile = {
             name,
             email,
+            uplay,
+            competition,
+            ranked,
+            region,
+            play_style,
+            times,
             ...(rest.oldPassword ? rest : {}),
         };
 
         const response = yield call(api.put, 'users', profile);
 
-        toast.success('Sucesso ao atualizar os dados!');
+        toast.success('Your profile was successfully updated!');
         yield put(updateProfileSuccess(response.data));
     } catch (err) {
-        toast.error('Erro ao atualizar os dados!');
+        toast.error('Error to update your profile!');
 
         yield put(updateProfileFailure());
     }

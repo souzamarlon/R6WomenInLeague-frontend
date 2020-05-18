@@ -14,7 +14,7 @@ import { signUpRequest } from '~/store/modules/auth/actions';
 // import { Container } from './styles';
 
 export default function SignUp() {
-    const [defaultValue, setDefaultValue] = useState('South America');
+    const [defaultValue] = useState('South America');
     const [selectRegion, setSelectRegion] = useState([]);
 
     const schema = Yup.object().shape({
