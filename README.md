@@ -24,7 +24,6 @@ Front-end:
 - [history](https://github.com/ReactTraining/history)
 - [styled-components](https://www.styled-components.com/)
 - [prop-types](https://github.com/facebook/prop-types)
-- [react-datepicker](https://github.com/Hacker0x01/react-datepicker)
 - [Redux-Saga](https://redux-saga.js.org/)
 - [react-select](https://github.com/JedWatson/react-select)
 - [react-toastify](https://github.com/fkhadra/react-toastify)
