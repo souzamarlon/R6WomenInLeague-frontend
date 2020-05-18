@@ -6,7 +6,7 @@
 In order to fight against discrimination, our goal is to help women in R6 to find a safe space during the game experience and connect with other women around the globe.
 </h4>
 
-<div>
+<div align="center">
   <img src="https://user-images.githubusercontent.com/42625569/82250038-2875ca00-9921-11ea-98aa-25db1c5454b3.gif" alt="demo-web" height="425">
 </div>
 
