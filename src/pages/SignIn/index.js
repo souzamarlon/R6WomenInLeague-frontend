@@ -28,8 +28,8 @@ export default function SignIn() {
         <>
             <h1 className="welcome">Welcome,</h1>
             <h4 className="welcomeText">
-                In order to fight discrimination, out goal is to help women in
-                R6 to find a safe space in during the game experience and
+                In order to fight against discrimination, our goal is to help
+                women in R6 to find a safe space during the game experience and
                 connect with other women around the globe.
             </h4>
             <Form schema={schema} onSubmit={handleSubmit}>
