@@ -34,7 +34,7 @@ export default function SignUp() {
                 params: {
                     username: uplay,
                     platform: 'pc',
-                    type: 'generic',
+                    type: 'seasonal',
                 },
             });
 
