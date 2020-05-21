@@ -85,7 +85,7 @@ export default function CardFriends({ cardId, dataR6, allData }) {
             if (window.confirm(`Are you sure to remove ${dataR6.name}?`)) {
                 await api.delete(`/friendship/${id}`);
 
-                toast.success(`Removed ${dataR6.name} successfully`);
+                toast.success(`${dataR6.name} was removed successfully.`);
                 history.push('/friends');
             }
         } catch (err) {
@@ -96,9 +96,12 @@ export default function CardFriends({ cardId, dataR6, allData }) {
     async function reportFake(id) {
         try {
             if (window.confirm(`Are you sure to report ${dataR6.name}?`)) {
-                await api.put(`/friendship/${id}`, { expose_fake: true });
+                await api.put(`/friendship/${id}`, {
+                    expose_fake: true,
+                    id_reported: dataR6.id,
+                });
 
-                toast.success(`Reported ${dataR6.name} successfully`);
+                toast.success(`${dataR6.name} was reported successfully.`);
                 history.push('/friends');
             }
         } catch (err) {
@@ -118,6 +121,8 @@ export default function CardFriends({ cardId, dataR6, allData }) {
             toast.error('Failure to accept your friend!');
         }
     }
+
+    console.tron.log(dataR6);
 
     return (
         <Container
