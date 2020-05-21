@@ -21,7 +21,6 @@ Front-end:
 - [ReactJS](https://reactjs.org/)
 - [Axios](https://github.com/axios/axios)
 - [Immer](https://github.com/immerjs/immer)
-- [date-fns](https://date-fns.org/)
 - [material-ui](https://github.com/mui-org/material-ui)
 - [@rocketseat/unform](https://github.com/Rocketseat/unform)
 - [history](https://github.com/ReactTraining/history)
