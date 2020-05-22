@@ -17,6 +17,10 @@ export function* signIn({ payload }) {
 
         const { token, user } = response.data;
 
+        if (user.banned) {
+            return toast.error('Your account was banned!');
+        }
+
         api.defaults.headers.Authorization = `Bearer ${token}`;
 
         yield put(signInSuccess(token, user));
