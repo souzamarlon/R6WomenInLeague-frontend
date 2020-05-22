@@ -17,10 +17,6 @@ export function* signIn({ payload }) {
 
         const { token, user } = response.data;
 
-        if (user.banned) {
-            return toast.error('Your account was banned!');
-        }
-
         api.defaults.headers.Authorization = `Bearer ${token}`;
 
         yield put(signInSuccess(token, user));
@@ -28,7 +24,8 @@ export function* signIn({ payload }) {
         history.push('/dashboard');
     } catch (err) {
         yield put(signFailure());
-        toast.error('Authentication failure!');
+        const { error } = err.response.data;
+        toast.error(`Authentication failure!, ${error}`);
     }
 }
 
