@@ -2,6 +2,7 @@ import { persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 import createStore from './createStore';
 import persistReducer from './persistReducer';
+import api from '~/services/api';
 
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
@@ -15,6 +16,8 @@ const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 const middlewares = [sagaMiddleware];
 
 const store = createStore(persistReducer(rootReducer), middlewares);
+
+api.registerInterceptWithStore(store);
 
 const persistor = persistStore(store);
 
