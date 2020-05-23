@@ -13,13 +13,14 @@ const sagaMonitor =
         : null;
 const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
+console.tron.log(process.env.NODE_ENV);
+
 const middlewares = [sagaMiddleware];
 
 const store = createStore(persistReducer(rootReducer), middlewares);
+const persistor = persistStore(store);
 
 api.registerInterceptWithStore(store);
-
-const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
 

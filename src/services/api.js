@@ -10,7 +10,8 @@ const api = axios.create({
 api.registerInterceptWithStore = (store) => {
     api.interceptors.response.use(
         (response) => response,
-        async function check(err) {
+
+        async (err) => {
             if (err.response.status === 401) {
                 const { error } = err.response.data;
                 toast.error(`Authentication failure!, ${error}`);
