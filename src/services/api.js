@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import history from './history';
 import { signOut } from '../store/modules/auth/actions';
 
 const api = axios.create({
@@ -15,9 +14,8 @@ api.registerInterceptWithStore = (store) => {
             if (err.response.status === 401) {
                 const { error } = err.response.data;
                 toast.error(`Authentication failure!, ${error}`);
-                console.tron.log(store);
+
                 store.dispatch(signOut());
-                history.push('/');
             }
         }
     );

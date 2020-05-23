@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
 
@@ -14,14 +15,20 @@ export default function Dashboard() {
 
     useEffect(() => {
         async function SearchFun() {
-            const response = await api.get(`users`, {
-                params: {
-                    page,
-                    per_page: 14,
-                },
-            });
+            try {
+                const response = await api.get(`users`, {
+                    params: {
+                        page,
+                        per_page: 14,
+                    },
+                });
 
-            setR6Data(response.data);
+                setR6Data(response.data);
+            } catch (err) {
+                const { error } = err.response.data;
+
+                toast.error(`Failure!, ${error}`);
+            }
         }
 
         SearchFun();
