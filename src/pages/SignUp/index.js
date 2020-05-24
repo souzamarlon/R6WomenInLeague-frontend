@@ -18,12 +18,10 @@ export default function SignUp() {
     const [selectRegion, setSelectRegion] = useState([]);
 
     const schema = Yup.object().shape({
-        name: Yup.string().required('Missing name field'),
-        email: Yup.string()
-            .email('Insira um e-mail válido')
-            .required('O e-mail é obrigatório'),
-        uplay: Yup.string(),
-        password: Yup.string().required('A senha é obrigatoria'),
+        name: Yup.string().required('Name field is required.'),
+        email: Yup.string().email().required('E-mail field is required.'),
+        uplay: Yup.string().required('Uplay field is required.'),
+        password: Yup.string().required('Password field is required.'),
     });
     const dispatch = useDispatch();
     const loading = useSelector((state) => state.auth.loading);

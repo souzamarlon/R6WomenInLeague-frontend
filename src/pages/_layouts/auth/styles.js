@@ -47,6 +47,9 @@ export const Content = styled.div`
         display: flex;
         flex-direction: column;
         /* margin-top: 20px; */
+        color: #ffff;
+        font-size: 10px;
+
         input {
             background: rgba(255, 255, 255, 0.2);
             border: 0.5px solid #eee;
