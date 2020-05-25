@@ -55,7 +55,12 @@ export default function SignUp() {
         <>
             <Form schema={schema} onSubmit={handleSubmit}>
                 <p>NAME:</p>
-                <Input name="name" type="name" placeholder="Eliza Ash Cohen" />
+                <Input
+                    type="text"
+                    name="name"
+                    placeholder="Eliza Ash Cohen"
+                    maxLength="25"
+                />
                 <p>E-MAIL:</p>
                 <Input
                     name="email"
@@ -63,7 +68,12 @@ export default function SignUp() {
                     placeholder="exemplo@email.com"
                 />
                 <p>UPLAY NICKNAME:</p>
-                <Input name="uplay" placeholder="Ash" />
+                <Input
+                    type="text"
+                    name="uplay"
+                    placeholder="Ash"
+                    maxLength="15"
+                />
                 <p>PASSWORD:</p>
                 <Input
                     name="password"

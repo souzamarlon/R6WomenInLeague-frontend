@@ -106,9 +106,10 @@ export default function Profile() {
                 >
                     <p>Name:</p>
                     <Input
+                        type="text"
                         name="name"
-                        type="name"
                         placeholder="Eliza Ash Cohen"
+                        maxLength="25"
                     />
                     <p>E-mail:</p>
                     <Input
@@ -117,9 +118,19 @@ export default function Profile() {
                         placeholder="exemplo@email.com"
                     />
                     <p>Uplay Nickname:</p>
-                    <Input name="uplay" placeholder="Ash" />
+                    <Input
+                        type="text"
+                        name="uplay"
+                        placeholder="Ash"
+                        maxLength="15"
+                    />
                     <p>Discord:</p>
-                    <Input name="discord_user" placeholder="Ash" />
+                    <Input
+                        type="text"
+                        name="discord_user"
+                        placeholder="Ash"
+                        maxLength="20"
+                    />
                     <p>Password:</p>
                     <Input
                         name="oldPassword"
