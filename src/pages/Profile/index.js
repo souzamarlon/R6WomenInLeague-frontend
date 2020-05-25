@@ -56,13 +56,16 @@ export default function Profile() {
         confirmPassword,
     }) {
         try {
-            await api.get('/stats', {
+            const uplayExists = await api.get('/stats', {
                 params: {
                     username: uplay,
                     platform: 'pc',
                     type: 'generic',
                 },
             });
+            if (!uplayExists) {
+                throw new Error('Whoops!');
+            }
 
             const { competition } = selectField;
             const { ranked } = selectField;

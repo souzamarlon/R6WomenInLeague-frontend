@@ -28,13 +28,17 @@ export default function SignUp() {
 
     async function handleSubmit({ name, email, uplay, password }) {
         try {
-            await api.get('/stats', {
+            const uplayExists = await api.get('/stats', {
                 params: {
                     username: uplay,
                     platform: 'pc',
                     type: 'seasonal',
                 },
             });
+
+            if (!uplayExists) {
+                throw new Error('Whoops!');
+            }
 
             const region = selectRegion.length ? selectRegion : defaultValue;
 
