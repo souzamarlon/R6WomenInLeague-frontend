@@ -34,7 +34,7 @@ export function* signUp({ payload }) {
     try {
         const { name, email, uplay, region, password } = payload;
 
-        yield call(api.post, 'users', {
+        const response = yield call(api.post, 'users', {
             name,
             email,
             uplay,
@@ -42,11 +42,13 @@ export function* signUp({ payload }) {
             password,
         });
 
-        toast.success('Your account has been created successfully!');
+        if (response) {
+            toast.success('Your account has been created successfully!');
 
-        history.push('/');
+            history.push('/');
+        }
     } catch (err) {
-        toast.error('Failure, something is wrong!');
+        toast.error(`Failure, something is wrong!`);
 
         yield put(signFailure());
     }

@@ -13,8 +13,6 @@ const sagaMonitor =
         : null;
 const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
-console.tron.log(process.env.NODE_ENV);
-
 const middlewares = [sagaMiddleware];
 
 const store = createStore(persistReducer(rootReducer), middlewares);

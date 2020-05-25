@@ -18,6 +18,10 @@ api.registerInterceptWithStore = (store) => {
 
                 store.dispatch(signOut());
             }
+            if (err.response.status === 400) {
+                const { error } = err.response.data;
+                toast.error(`Failure, something is wrong!, ${error}`);
+            }
         }
     );
 };
