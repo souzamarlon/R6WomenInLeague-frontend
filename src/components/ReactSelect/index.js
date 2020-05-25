@@ -41,6 +41,7 @@ export default function ReactSelect({
             return {
                 ...styles,
                 fontSize: '12px',
+                color: 'black',
             };
         },
 
