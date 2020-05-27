@@ -86,7 +86,7 @@ export default function CardFriends({ cardId, dataR6, allData }) {
                 await api.delete(`/friendship/${id}`);
 
                 toast.success(`${dataR6.name} was removed successfully.`);
-                history.push('/friends');
+                history.go('/friends');
             }
         } catch (err) {
             toast.error('Failure to remove your friend!');
@@ -102,7 +102,7 @@ export default function CardFriends({ cardId, dataR6, allData }) {
                 });
 
                 toast.success(`${dataR6.name} was reported successfully.`);
-                history.push('/friends');
+                history.go('/friends');
             }
         } catch (err) {
             toast.error('Failure to remove your friend!');
@@ -115,14 +115,12 @@ export default function CardFriends({ cardId, dataR6, allData }) {
                 await api.put(`/friendship/${id}`, { accepted: true });
 
                 toast.success(`Accepted ${dataR6.name} successfully`);
-                history.push('/friends');
+                history.go('/friends');
             }
         } catch (err) {
             toast.error('Failure to accept your friend!');
         }
     }
-
-    console.tron.log(dataR6);
 
     return (
         <Container
