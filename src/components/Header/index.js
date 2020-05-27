@@ -2,7 +2,9 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import { Container, Content } from './styles';
+import { Container, Content, AlignNotification } from './styles';
+
+import Notifications from '../Notifications';
 
 export default function Header() {
     return (
@@ -24,9 +26,14 @@ export default function Header() {
                         >
                             SEARCH
                         </NavLink>
+
                         <NavLink to="/friends" activeClassName="selected">
-                            FRIENDS
+                            <AlignNotification>
+                                FRIENDS
+                                <Notifications />
+                            </AlignNotification>
                         </NavLink>
+
                         <NavLink to="/profile" activeClassName="selected">
                             PROFILE
                         </NavLink>

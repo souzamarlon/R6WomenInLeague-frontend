@@ -51,3 +51,8 @@ export const Content = styled.div`
         }
     }
 `;
+
+export const AlignNotification = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
