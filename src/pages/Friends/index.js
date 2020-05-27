@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import {
     Container,
@@ -26,26 +27,30 @@ export default function Dashboard() {
 
     useEffect(() => {
         async function SearchFun() {
-            if (myFriends) {
+            try {
+                if (myFriends) {
+                    const response = await api.get(`friendship`, {
+                        params: {
+                            accepted: true,
+                            page,
+                            per_page: 14,
+                        },
+                    });
+
+                    return setR6Data(response.data);
+                }
+
                 const response = await api.get(`friendship`, {
                     params: {
-                        accepted: true,
                         page,
                         per_page: 14,
                     },
                 });
 
-                return setR6Data(response.data);
+                setR6Data(response.data);
+            } catch (err) {
+                toast.error('Failure!');
             }
-
-            const response = await api.get(`friendship`, {
-                params: {
-                    page,
-                    per_page: 14,
-                },
-            });
-
-            setR6Data(response.data);
         }
 
         SearchFun();
