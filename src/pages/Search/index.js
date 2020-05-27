@@ -41,6 +41,10 @@ export default function Search() {
                     },
                 });
 
+                if (response.data.length <= 0) {
+                    return alert('Hi, We did not find more users!');
+                }
+
                 setR6Data(response.data);
             }
         }

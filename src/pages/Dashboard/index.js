@@ -23,6 +23,10 @@ export default function Dashboard() {
                     },
                 });
 
+                if (response.data.length <= 0) {
+                    return alert('No more users found!');
+                }
+
                 setR6Data(response.data);
             } catch (err) {
                 const { error } = err.response.data;
