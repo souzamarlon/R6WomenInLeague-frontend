@@ -4,7 +4,7 @@ import api from '~/services/api';
 
 import { Content, Avatar } from './styles';
 
-export default function Card({ dataR6 }) {
+export default function Card({ dataR6, friendAdded }) {
     const [playerData, setPlayerData] = useState([{}]);
 
     useEffect(() => {
@@ -63,6 +63,7 @@ export default function Card({ dataR6 }) {
         try {
             await api.post(`/friendship/${id}`);
 
+            friendAdded(id);
             return toast.success(`Added ${dataR6.name} successfully`);
         } catch (err) {
             return toast.error('Failure to add your friend!');

@@ -38,8 +38,6 @@ export default function Notifications() {
         SearchFun();
     }, [id]);
 
-    console.tron.log(notification);
-
     return (
         <Container>
             {notification <= 0 ? (

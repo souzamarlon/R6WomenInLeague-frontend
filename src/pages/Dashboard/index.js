@@ -11,6 +11,8 @@ import api from '~/services/api';
 
 export default function Dashboard() {
     const [r6Data, setR6Data] = useState([]);
+    const [friendAdded, setFriendAdded] = useState([]);
+
     const [page, setPage] = useState(1);
 
     useEffect(() => {
@@ -38,6 +40,12 @@ export default function Dashboard() {
         SearchFun();
     }, [page]);
 
+    useEffect(() => {
+        if (friendAdded) {
+            console.tron.log(friendAdded);
+        }
+    }, [friendAdded]);
+
     function handlePage(action) {
         // const count = action === 'back' ? page - 1 : page + 1;
         setPage(action === 'back' ? page - 1 : page + 1);
@@ -48,7 +56,11 @@ export default function Dashboard() {
             <Content>
                 <CardList>
                     {r6Data.map((item) => (
-                        <Card key={item.id} dataR6={item} />
+                        <Card
+                            key={item.id}
+                            dataR6={item}
+                            friendAdded={(value) => setFriendAdded(value)}
+                        />
                     ))}
                 </CardList>
             </Content>
