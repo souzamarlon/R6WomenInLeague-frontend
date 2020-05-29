@@ -24,7 +24,7 @@ export default function Dashboard() {
                 });
 
                 if (response.data.length <= 0) {
-                    return alert('No more users found!');
+                    return alert('Hi, We did not find more users!');
                 }
 
                 setR6Data(response.data);
