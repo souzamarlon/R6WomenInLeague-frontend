@@ -2,11 +2,16 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
+import history from '~/services/history';
 import { Container, Content, AlignNotification } from './styles';
 
 import Notifications from '../Notifications';
 
 export default function Header() {
+    const location = history.location.pathname;
+    function refreshPage() {
+        history.go('/search');
+    }
     return (
         <Container>
             <Content>
@@ -22,7 +27,9 @@ export default function Header() {
                         <NavLink
                             to="/search"
                             activeClassName="selected"
-                            // className={open.dashboard ? 'active' : null}
+                            onClick={() =>
+                                location.match('search') ? refreshPage() : null
+                            }
                         >
                             SEARCH
                         </NavLink>
