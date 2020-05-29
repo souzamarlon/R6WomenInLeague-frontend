@@ -41,9 +41,13 @@ export default function Dashboard() {
     }, [page]);
 
     useEffect(() => {
-        if (friendAdded) {
-            console.tron.log(friendAdded);
+        if (friendAdded > 0) {
+            const newList = r6Data.filter((value) => {
+                return value.id === friendAdded ? null : value;
+            });
+            setR6Data(newList);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [friendAdded]);
 
     function handlePage(action) {
