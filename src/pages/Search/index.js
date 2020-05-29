@@ -13,6 +13,7 @@ export default function Search() {
     const [playerData, setPlayerData] = useState([]);
     const [r6Data, setR6Data] = useState([]);
     const [page, setPage] = useState(1);
+    const [friendAdded, setFriendAdded] = useState([]);
 
     // const [page, setPage] = useState(1);
 
@@ -57,13 +58,27 @@ export default function Search() {
         setPage(action === 'back' ? page - 1 : page + 1);
     }
 
+    useEffect(() => {
+        if (friendAdded > 0) {
+            const newList = r6Data.filter((value) => {
+                return value.id === friendAdded ? null : value;
+            });
+            setR6Data(newList);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [friendAdded]);
+
     return (
         <Container>
             <Content isAlign={!!playerData.length}>
                 {playerData.length !== 0 ? (
                     <CardList>
                         {r6Data.map((item) => (
-                            <Card key={item.id} dataR6={item} />
+                            <Card
+                                key={item.id}
+                                dataR6={item}
+                                friendAdded={(value) => setFriendAdded(value)}
+                            />
                         ))}
                     </CardList>
                 ) : (
