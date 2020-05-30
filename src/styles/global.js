@@ -34,16 +34,29 @@ button {
 @media (max-width: 1496px){
     html{
     height: 100%;
+
+    /* DASHBOARD */
     .pbVmM {
         overflow: auto;
 
     }
-    .bDsmxU{
+    .bDsmxU {
+        grid-template-columns: repeat(5,1fr);
+        font-size: 60%;
+    }
+
+    /* SEARCH PAGE */
+    .hVuirm{
+        overflow: auto;
+
+    }
+    .ewyzk{
         grid-template-columns: repeat(5,1fr);
         font-size: 60%;
     }
 
     }
+
 }
 
 @media (max-width: 1040px){
@@ -53,9 +66,24 @@ button {
 
     } */
 
+    /* DASHBOARD */
+    .pbVmM {
+        overflow: auto;
+
+    }
     .bDsmxU{
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(3,1fr);
              font-size: 60%;
+    }
+
+    /* SEARCH PAGE */
+    .hVuirm{
+        overflow: auto;
+
+    }
+    .ewyzk{
+        grid-template-columns: repeat(3,1fr);
+        font-size: 60%;
     }
 
     }
