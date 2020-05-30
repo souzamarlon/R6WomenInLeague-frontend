@@ -9,50 +9,60 @@ export default function Card({ dataR6, friendAdded }) {
 
     useEffect(() => {
         async function getPlayerData(array) {
-            const { data } = await api.get('/stats', {
-                params: {
-                    username: dataR6.uplay,
-                    platform: 'pc',
-                    type: 'seasonal',
-                },
-            });
+            try {
+                const response = await api.get('/stats', {
+                    params: {
+                        username: dataR6.uplay,
+                        platform: 'pc',
+                        type: 'seasonal',
+                    },
+                });
 
-            const { ncsa, emea, apac } = data.seasons[
-                Object.keys(data.seasons)[0]
-            ].regions;
+                if (response) {
+                    const { data } = response;
 
-            switch (dataR6.region) {
-                case 'South America':
-                case 'North America':
-                    setPlayerData({
-                        username: data.username,
-                        avatar_url: data.avatar_url_256,
-                        seasonData: ncsa[0], // It will return the most updated data from this user.
-                    });
-                    break;
-                case 'Europe':
-                case 'Africa':
-                    setPlayerData({
-                        username: data.username,
-                        avatar_url: data.avatar_url_256,
-                        seasonData: emea[0], // It will return the most updated data from this user.
-                    });
-                    break;
-                case 'Asia':
-                case 'Oceania':
-                    setPlayerData({
-                        username: data.username,
-                        avatar_url: data.avatar_url_256,
-                        seasonData: apac[0], // It will return the most updated data from this user.
-                    });
-                    break;
-                default:
-                    setPlayerData({
-                        avatar_url: data.avatar_url_256,
-                        ncsa,
-                        emea,
-                        apac,
-                    });
+                    const { ncsa, emea, apac } = data.seasons[
+                        Object.keys(data.seasons)[0]
+                    ].regions;
+
+                    switch (dataR6.region) {
+                        case 'South America':
+                        case 'North America':
+                            setPlayerData({
+                                username: data.username,
+                                avatar_url: data.avatar_url_256,
+                                seasonData: ncsa[0], // It will return the most updated data from this user.
+                            });
+                            break;
+                        case 'Europe':
+                        case 'Africa':
+                            setPlayerData({
+                                username: data.username,
+                                avatar_url: data.avatar_url_256,
+                                seasonData: emea[0], // It will return the most updated data from this user.
+                            });
+                            break;
+                        case 'Asia':
+                        case 'Oceania':
+                            setPlayerData({
+                                username: data.username,
+                                avatar_url: data.avatar_url_256,
+                                seasonData: apac[0], // It will return the most updated data from this user.
+                            });
+                            break;
+                        default:
+                            setPlayerData({
+                                avatar_url: data.avatar_url_256,
+                                ncsa,
+                                emea,
+                                apac,
+                            });
+                    }
+                }
+            } catch (err) {
+                const { error } = err.response.data;
+
+                console.log('Error', error);
             }
         }
 
@@ -75,7 +85,7 @@ export default function Card({ dataR6, friendAdded }) {
             key={dataR6.id}
             status_ranked={dataR6.ranked}
             status_competition={dataR6.competition}
-            onClick={() => addFriend(dataR6.id)}
+            onDoubleClick={() => addFriend(dataR6.id)}
         >
             <Avatar>
                 <img

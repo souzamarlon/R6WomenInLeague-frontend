@@ -31,13 +31,35 @@ ul {
 button {
     cursor: pointer;
 }
-/* @media (max-width: 1040px){
+@media (max-width: 1496px){
     html{
     height: 100%;
+    .pbVmM {
+        overflow: auto;
 
+    }
+    .bDsmxU{
+        grid-template-columns: repeat(5,1fr);
         font-size: 60%;
     }
-} */
+
+    }
+}
+
+@media (max-width: 1040px){
+    html{
+        /* .pbVmM {
+        overflow: auto;
+
+    } */
+
+    .bDsmxU{
+        grid-template-columns: repeat(2,1fr);
+             font-size: 60%;
+    }
+
+    }
+}
 .Toastify {
     font-size: 1.4rem;
 }
