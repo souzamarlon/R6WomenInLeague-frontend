@@ -51,6 +51,9 @@ export const Content = styled.button`
                 ? 'rgba(78, 253, 34, 0.42)'
                 : 'rgba(0, 0, 0, 0.8)'};
         border-radius: 9px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     div.competition {
         font-size: 1rem;
@@ -67,6 +70,9 @@ export const Content = styled.button`
                 ? 'rgba(78, 253, 34, 0.42)'
                 : 'rgba(0, 0, 0, 0.8)'};
         border-radius: 9px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     div.times {
@@ -80,6 +86,9 @@ export const Content = styled.button`
         color: #fff;
         background-color: rgba(24, 29, 163, 0.42);
         border-radius: 9px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     div.region {
@@ -87,12 +96,15 @@ export const Content = styled.button`
         font-weight: bold;
         text-align: center;
         margin: 5px auto;
-        padding-top: 2px;
+        /* padding-top: 2px; */
         width: 81px;
         height: 16.34px;
         color: #fff;
         background-color: rgba(255, 25, 34, 0.33);
         border-radius: 9px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     button {
