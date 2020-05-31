@@ -4,7 +4,8 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
     background: rgba(27, 25, 28, 0.74);
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: 815px;
     display: flex;
     margin: 10px auto;

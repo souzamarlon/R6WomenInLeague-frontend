@@ -32,10 +32,15 @@ button {
     cursor: pointer;
 }
 @media (max-width: 1496px){
+
     html{
 
     font-size: 50%;
-    /* height: 100%; */
+
+     /* Background PAGE */
+    .iLEaYy{
+        height: 140vh;
+    }
 
     /* DASHBOARD */
     .pbVmM {
@@ -73,6 +78,7 @@ button {
 @media (max-width: 1360px){
     html{
     font-size: 50%;
+    height: 100%;
 
     /* DASHBOARD */
 
@@ -104,6 +110,7 @@ button {
     }
 
      /* FRIEND PAGE */
+
     .gYUVIH{
         height: 65%;
         overflow: auto;
@@ -113,6 +120,8 @@ button {
         grid-template-columns: repeat(14,1fr);
         overflow: auto;
     }
+
+
 
     }
 }
