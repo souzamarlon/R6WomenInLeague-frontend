@@ -26,7 +26,7 @@ export const CardList = styled.ul`
 
 export const Menu = styled.div`
     height: 25px;
-    width: 12.45vw;
+    width: 239.04px;
     flex-direction: row;
     margin: 0 auto;
     background: rgba(221, 221, 221, 0.4);
@@ -45,7 +45,8 @@ export const Menu = styled.div`
 `;
 
 export const SwitchButton = styled.button`
-    width: 100px;
+    width: 100%;
+    max-width: 100px;
 
     border: 0;
     border-radius: 20px;
@@ -57,18 +58,18 @@ export const SwitchButton = styled.button`
         -moz-transform: scale(0.9);
         -webkit-transform: scale(0.9);
         transform: scale(0.9);
-        font-size: 10px;
+        font-size: 1rem;
     }
     .notActive {
         color: #000;
         opacity: 0.6;
         font-weight: bold;
-        font-size: 12px;
+        font-size: 1.2rem;
     }
 
     .active {
         font-weight: bold;
-        font-size: 12px;
+        font-size: 1.2rem;
         color: #fff;
     }
 `;

@@ -57,6 +57,15 @@ button {
         /* font-size: 60%; */
     }
 
+     /* FRIEND PAGE */
+    .gYUVIH{
+        overflow: auto;
+    }
+
+    .btxDbm{
+        grid-template-columns: repeat(5,1fr);
+    }
+
     }
 
 }
@@ -92,6 +101,17 @@ button {
         grid-template-columns: repeat(14,1fr);
         overflow: auto;
         /* font-size: 60%; */
+    }
+
+     /* FRIEND PAGE */
+    .gYUVIH{
+        height: 65%;
+        overflow: auto;
+    }
+
+    .btxDbm{
+        grid-template-columns: repeat(14,1fr);
+        overflow: auto;
     }
 
     }
