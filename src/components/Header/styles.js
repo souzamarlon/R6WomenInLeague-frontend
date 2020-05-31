@@ -25,18 +25,9 @@ export const Content = styled.div`
     nav {
         display: flex;
         align-items: center;
-        padding-right: 20px;
+        /* padding-right: 20px; */
 
         color: #000000;
-        img {
-            display: block;
-            width: 135px;
-            height: 26px;
-            margin-right: 20px;
-            padding-right: 20px;
-            align-items: center;
-            border-right: 1px solid #dddddd;
-        }
         a {
             font-size: 1.6rem;
             margin-right: 15px;

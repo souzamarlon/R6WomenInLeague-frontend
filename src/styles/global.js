@@ -33,7 +33,9 @@ button {
 }
 @media (max-width: 1496px){
     html{
-    height: 100%;
+
+    font-size: 50%;
+    /* height: 100%; */
 
     /* DASHBOARD */
     .pbVmM {
@@ -42,7 +44,7 @@ button {
     }
     .bDsmxU {
         grid-template-columns: repeat(5,1fr);
-        font-size: 60%;
+        /* font-size: 60%; */
     }
 
     /* SEARCH PAGE */
@@ -52,28 +54,27 @@ button {
     }
     .ewyzk{
         grid-template-columns: repeat(5,1fr);
-        font-size: 60%;
+        /* font-size: 60%; */
     }
 
     }
 
 }
 
-@media (max-width: 1040px){
+@media (max-width: 1360px){
     html{
-        /* .pbVmM {
-        overflow: auto;
-
-    } */
+    font-size: 40%;
 
     /* DASHBOARD */
     .pbVmM {
+        height: 65%;
         overflow: auto;
 
     }
     .bDsmxU{
-        grid-template-columns: repeat(3,1fr);
-             font-size: 60%;
+        grid-template-columns: repeat(14,1fr);
+        overflow: auto;
+        /* font-size: 60%; */
     }
 
     /* SEARCH PAGE */
@@ -83,7 +84,7 @@ button {
     }
     .ewyzk{
         grid-template-columns: repeat(3,1fr);
-        font-size: 60%;
+        /* font-size: 60%; */
     }
 
     }
