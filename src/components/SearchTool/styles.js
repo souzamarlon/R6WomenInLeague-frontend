@@ -3,18 +3,23 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Container = styled.div`
-    width: 21vw;
-    height: 54vh;
-    background: rgba(172, 28, 80, 0.5);
+    /* max-width: 21vw; */
+    /* height: 51vh; */
+
+    width: 100%;
+    max-width: 403.2px;
+    height: 100%;
+    max-height: 477.87px;
+    background: rgba(172, 28, 80, 0.3);
+    border: 1px solid rgba(255, 50, 222, 0.2);
 
     border-radius: 8px;
-
-    padding-top: 10px;
+    /* padding-top: 10px; */
     margin-top: 30px;
     margin-bottom: 30px;
 
     h1 {
-        margin-top: 40px;
+        margin-top: 20px;
         padding: 0 20px;
         font-size: 14px;
         font-weight: bold;
