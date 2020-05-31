@@ -63,9 +63,14 @@ button {
 
 @media (max-width: 1360px){
     html{
-    font-size: 40%;
+    font-size: 50%;
 
     /* DASHBOARD */
+
+    .lbrSfc a{
+        font-size: 1.1rem;
+
+    }
     .pbVmM {
         height: 65%;
         overflow: auto;
@@ -79,11 +84,13 @@ button {
 
     /* SEARCH PAGE */
     .hVuirm{
+        height: 65%;
         overflow: auto;
 
     }
     .ewyzk{
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(14,1fr);
+        overflow: auto;
         /* font-size: 60%; */
     }
 

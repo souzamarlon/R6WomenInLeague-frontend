@@ -2,16 +2,15 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     align-items: center;
-    padding: 0 30px;
-    justify-content: space-between;
+    /* padding: 0 30px; */
+    justify-content: center;
     display: flex;
-    /* width: 100vw; */
     margin: 20px auto;
-
-    width: 31.45vw;
+    width: 60%;
+    /* max-width: 31.45vw; */
     height: 43px;
-    background: rgba(221, 221, 221, 0.2);
-    border: 1px solid rgba(221, 221, 221, 0.2);
+    background: rgba(00, 221, 221, 0.2);
+    border: 1px solid rgba(222, 222, 225, 0.4);
     box-sizing: border-box;
     border-radius: 29px;
 `;
