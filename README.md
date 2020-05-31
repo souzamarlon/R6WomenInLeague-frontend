@@ -1,6 +1,15 @@
 <h1 align="center">
     R6 WOMEN'S ALLIANCE
 </h1>
+
+![](https://img.shields.io/github/package-json/v/souzamarlon/R6WomenInLeague-frontend.svg)
+![](https://img.shields.io/github/last-commit/souzamarlon/R6WomenInLeague-frontend.svg?color=red)
+![](https://img.shields.io/github/languages/top/souzamarlon/R6WomenInLeague-frontend.svg?color=yellow)
+![](https://img.shields.io/github/languages/count/souzamarlon/R6WomenInLeague-frontend.svg?color=lightgrey)
+![](https://img.shields.io/github/languages/code-size/souzamarlon/R6WomenInLeague-frontend.svg)
+![](https://img.shields.io/github/repo-size/souzamarlon/R6WomenInLeague-frontend.svg?color=blueviolet)
+[![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
+
 <h4 align="center">
 In order to fight against discrimination, our goal is to help women in R6 to find a safe space during the game experience and connect with other women around the globe.
 </h4>
