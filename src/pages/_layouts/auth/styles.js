@@ -3,27 +3,38 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Wrapper = styled.div`
-    height: 100%;
+    height: 100vh;
+
     background-image: url(${(props) => props.background});
     background-size: 100% 100%;
-    display: flex;
+    /* display: flex; */
+    text-align: center;
     justify-content: center;
     align-items: center;
+
+    h1.photoBy {
+        width: 99%;
+        position: absolute;
+        bottom: 0;
+        font-size: 8px;
+        text-align: right;
+        color: #fff;
+    }
 `;
 
 export const Title = styled.div`
-    color: #fff;
-    font-size: 40px;
-    line-height: 54px;
-    letter-spacing: 0.4em;
-`;
-
-export const Box = styled.div`
+    margin: 0 auto;
+    padding-top: 124px;
     justify-content: center;
-    align-self: center;
-    text-align: right;
-    width: 40%;
-    margin: auto;
+    align-content: center;
+    display: flex;
+
+    p {
+        color: #fff;
+        font-size: 40px;
+        line-height: 54px;
+        letter-spacing: 0.4em;
+    }
 `;
 
 export const Container = styled.div`
@@ -46,7 +57,7 @@ export const Content = styled.div`
     form {
         display: flex;
         flex-direction: column;
-        /* margin-top: 20px; */
+        margin-top: 20px;
         color: #ffff;
         font-size: 10px;
 
@@ -126,17 +137,5 @@ export const Content = styled.div`
         letter-spacing: 0.2em;
         text-align: left;
         margin-bottom: 10px;
-    }
-`;
-
-export const Photo = styled.div`
-    position: absolute;
-    bottom: 0;
-    /* width: 100%; */
-    padding-bottom: 2px;
-    padding-right: 5px;
-    text-align: right;
-    span {
-        color: #fff;
     }
 `;
