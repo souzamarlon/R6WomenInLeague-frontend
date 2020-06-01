@@ -7,7 +7,9 @@ export const Wrapper = styled.div`
 
     background-image: url(${(props) => props.background});
     background-size: 100% 100%;
-    /* display: flex; */
+
+    display: flex;
+    flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -23,11 +25,10 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.div`
-    margin: 0 auto;
-    padding-top: 124px;
-    justify-content: center;
-    align-content: center;
+    text-align: center;
     display: flex;
+    align-items: center;
+    justify-content: center;
 
     p {
         color: #fff;

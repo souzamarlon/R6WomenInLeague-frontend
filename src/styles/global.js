@@ -76,6 +76,9 @@ button {
 }
 
 @media (max-width: 1360px){
+
+
+
     html{
     font-size: 50%;
     height: 100%;
