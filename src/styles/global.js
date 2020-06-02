@@ -38,7 +38,6 @@ button {
 
 /* ///////// */
 @media (max-width: 1496px){
-
 html {
         font-size: 50%;
     }
@@ -67,6 +66,7 @@ div.sc-fzqNJr{
 
 /* FRIEND PAGE */
 div.sc-fzoiQi{
+    overflow: auto;
 
     ul {
         grid-template-columns: repeat(5,1fr);
@@ -82,8 +82,6 @@ div.sc-fzoiQi{
 /* //// */
 
 @media (max-width: 1360px){
-
-
 html {
         font-size: 50%;
     }
@@ -91,13 +89,12 @@ html {
 body, #root{
 
 
-  /* Background PAGE */
-   div.sc-AxmLO{
+    /* Background PAGE */
+div.sc-AxmLO{
     height: 140vh;
+    }
 
-   }
-
-  /* Menu */
+    /* Menu */
 div.sc-AxgMl a {
     font-size: 1.1rem;
 }
@@ -132,14 +129,9 @@ div.sc-fzoiQi{
     overflow: auto;
     ul {
         grid-template-columns: repeat(14,1fr);
-        /* overflow: auto; */
+        overflow: auto;
         /* font-size: 60%; */
         }
-    }
-}
-
-
-
     }
 }
 
@@ -148,7 +140,5 @@ div.sc-fzoiQi{
 .Toastify {
 font-size: 1.4rem;
 }
-
-
 
 `;

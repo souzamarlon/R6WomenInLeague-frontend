@@ -188,13 +188,11 @@ export const AvailableInfo = styled.div`
     flex-direction: column;
 `;
 
-export const PlayerInfo = styled.ul`
-    /* flex-direction: row;
-    display: flex; */
+export const PlayerInfo = styled.div`
+    flex-direction: row;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-row-gap: none;
-    align-items: stretch;
+    align-items: center;
 `;
 
 export const AlignUplayIcon = styled.div`
