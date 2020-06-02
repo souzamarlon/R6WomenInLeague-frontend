@@ -15,6 +15,8 @@ export default createGlobalStyle`
 html, body, #root {
     height: 100%;
     font-size: 60.5%;
+
+
 }
 body{
     -webkit-font-smoothing: antialiased;
@@ -31,104 +33,122 @@ ul {
 button {
     cursor: pointer;
 }
+
+
+
+/* ///////// */
 @media (max-width: 1496px){
 
-    html{
-
-    font-size: 50%;
-
-     /* Background PAGE */
-    .iLEaYy{
-        height: 140vh;
+html {
+        font-size: 50%;
     }
+
+body, #root{
+
 
     /* DASHBOARD */
-    .pbVmM {
-        overflow: auto;
-
-    }
-    .bDsmxU {
+div.sc-fzplWN{
+    overflow: auto;
+    ul {
         grid-template-columns: repeat(5,1fr);
-        /* font-size: 60%; */
-    }
 
-    /* SEARCH PAGE */
-    .hVuirm{
-        overflow: auto;
+        }
+}
 
-    }
-    .ewyzk{
+/* SEARCH PAGE */
+div.sc-fzqNJr{
+    overflow: auto;
+    ul {
         grid-template-columns: repeat(5,1fr);
-        /* font-size: 60%; */
-    }
 
-     /* FRIEND PAGE */
-    .gYUVIH{
-        overflow: auto;
-    }
+        }
+}
 
-    .btxDbm{
+
+/* FRIEND PAGE */
+div.sc-fzoiQi{
+
+    ul {
         grid-template-columns: repeat(5,1fr);
-    }
 
-    }
+        }
+}
 
 }
+
+}
+
+
+/* //// */
 
 @media (max-width: 1360px){
 
 
+html {
+        font-size: 50%;
+    }
 
-    html{
-    font-size: 50%;
-    height: 100%;
+body, #root{
+
+
+  /* Background PAGE */
+   div.sc-AxmLO{
+    height: 140vh;
+
+   }
+
+  /* Menu */
+div.sc-AxgMl a {
+    font-size: 1.1rem;
+}
 
     /* DASHBOARD */
+div.sc-fzplWN{
+height: 65%;
+overflow: auto;
 
-    .lbrSfc a{
-        font-size: 1.1rem;
-
-    }
-    .pbVmM {
-        height: 65%;
-        overflow: auto;
-
-    }
-    .bDsmxU{
+    ul {
         grid-template-columns: repeat(14,1fr);
         overflow: auto;
         /* font-size: 60%; */
-    }
+        }
+}
 
-    /* SEARCH PAGE */
-    .hVuirm{
-        height: 65%;
-        overflow: auto;
-
-    }
-    .ewyzk{
+/* SEARCH PAGE */
+div.sc-fzqNJr{
+    height: 65%;
+    overflow: auto;
+    ul {
         grid-template-columns: repeat(14,1fr);
         overflow: auto;
         /* font-size: 60%; */
+        }
     }
 
-     /* FRIEND PAGE */
 
-    .gYUVIH{
-        height: 65%;
-        overflow: auto;
-    }
-
-    .btxDbm{
+/* FRIEND PAGE */
+div.sc-fzoiQi{
+    height: 65%;
+    overflow: auto;
+    ul {
         grid-template-columns: repeat(14,1fr);
-        overflow: auto;
+        /* overflow: auto; */
+        /* font-size: 60%; */
+        }
     }
+}
 
 
 
     }
 }
+
+}
+
 .Toastify {
-    font-size: 1.4rem;
+font-size: 1.4rem;
 }
+
+
+
 `;
