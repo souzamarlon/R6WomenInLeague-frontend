@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import {
     MoreHoriz,
     Favorite,
@@ -181,6 +182,9 @@ export default function CardFriends({ cardId, dataR6, allData }) {
                         onClick={() => reportFake(cardId)}
                     >
                         Report a fake
+                    </button>
+                    <button type="button" className="options">
+                        <Link to={`/chat/${dataR6.id}`}> Chat </Link>
                     </button>
                 </PopupOptions>
             </Popup>

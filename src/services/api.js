@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
+
 import history from '~/services/history';
 
 import { signOut } from '../store/modules/auth/actions';

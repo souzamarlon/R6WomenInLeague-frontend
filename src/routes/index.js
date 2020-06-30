@@ -10,6 +10,7 @@ import Dashboard from '../pages/Dashboard';
 import Search from '../pages/Search';
 import Friends from '../pages/Friends';
 import Profile from '../pages/Profile';
+import Chat from '../pages/Chat';
 
 export default function Routes() {
     return (
@@ -20,6 +21,7 @@ export default function Routes() {
             <Route path="/search" exact component={Search} isPrivate />
             <Route path="/friends" exact component={Friends} isPrivate />
             <Route path="/profile" exact component={Profile} isPrivate />
+            <Route path="/chat/:id" exact component={Chat} isPrivate />
         </Switch>
     );
 }
