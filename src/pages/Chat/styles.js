@@ -31,8 +31,14 @@ export const Container = styled.div`
 export const Content = styled.div`
     height: 300px;
     background: rgba(0, 25, 255, 0.9);
-
     overflow: auto;
+    width: 300px;
+`;
+
+export const MessageField = styled.div`
+    text-align: ${(props) => (props.textAlign ? 'left' : 'right')};
+    background: ${(props) => (props.textAlign ? '#FFF' : '#264')};
+
     .text {
         color: #000;
         font-size: 14px;

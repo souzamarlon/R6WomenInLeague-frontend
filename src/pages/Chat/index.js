@@ -3,7 +3,7 @@ import { Form, Input } from '@rocketseat/unform';
 import io from '~/services/io';
 import api from '~/services/api';
 
-import { Container, Content } from './styles';
+import { Container, Content, MessageField } from './styles';
 
 export default function Chat({ match }) {
     const [chatId, setChatId] = useState([]);
@@ -41,10 +41,9 @@ export default function Chat({ match }) {
                 {allMessages.map((item) => (
                     <>
                         {allMessages ? (
-                            <>
+                            <MessageField textAlign={item.user == id}>
                                 <span className="text">{item.message}</span>
-                                <br />
-                            </>
+                            </MessageField>
                         ) : null}
                     </>
                 ))}
