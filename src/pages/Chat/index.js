@@ -42,7 +42,7 @@ export default function Chat({ match }) {
                     <>
                         {allMessages ? (
                             <MessageField textAlign={item.user == id}>
-                                <span className="text">{item.message}</span>
+                                <h2 className="text">{item.message}</h2>
                             </MessageField>
                         ) : null}
                     </>

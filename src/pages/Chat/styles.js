@@ -30,17 +30,27 @@ export const Container = styled.div`
 
 export const Content = styled.div`
     height: 300px;
-    background: rgba(0, 25, 255, 0.9);
+    background: rgba(0, 25, 255, 0.2);
     overflow: auto;
     width: 300px;
+    border-radius: 10px;
+    border: 2px;
 `;
 
 export const MessageField = styled.div`
     text-align: ${(props) => (props.textAlign ? 'left' : 'right')};
     background: ${(props) => (props.textAlign ? '#FFF' : '#264')};
+    border-radius: 20px;
+
+    margin: 7px 10px;
+    padding: 0 10px;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
 
     .text {
         color: #000;
-        font-size: 14px;
+        font-size: 12px;
+        padding-top: 7px;
     }
 `;
