@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     margin: auto;
-    width: 300px;
-    height: 400px;
+    width: 350px;
+    height: 500px;
     background: #fff;
 
     form {
@@ -32,9 +32,31 @@ export const Content = styled.div`
     height: 300px;
     background: rgba(0, 25, 255, 0.2);
     overflow: auto;
-    width: 300px;
+    width: 350px;
     border-radius: 10px;
     border: 2px;
+`;
+
+export const FriendInfo = styled.div`
+    height: 65px;
+    width: 100%;
+    /* justify-content: center; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #222;
+
+    img {
+        width: 50px;
+        height: 55px;
+        border-radius: 100%;
+        margin: 0 10px;
+    }
+    h1 {
+        margin: 0 10px;
+        font-size: 12px;
+        color: #fff;
+    }
 `;
 
 export const MessageField = styled.div`

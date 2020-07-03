@@ -4,11 +4,13 @@ import io from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import api from '~/services/api';
 
-import { Container, Content, MessageField } from './styles';
+import { Container, Content, FriendInfo, MessageField } from './styles';
 
 export default function Chat({ match }) {
     const [chatId, setChatId] = useState(0);
     const [allMessages, setAllMessages] = useState([]);
+    const [friendInfo, setFriendInfo] = useState({});
+    const [avatar, setAvatar] = useState({});
 
     const profile = useSelector((state) => state.user.profile);
 
@@ -28,13 +30,34 @@ export default function Chat({ match }) {
             const response = await api.get(`/chat/${id}`);
 
             if (response.data) {
-                setChatId(response.data._id);
-                setAllMessages(response.data.messages);
+                setChatId(response.data.messagesReceived._id);
+                setAllMessages(response.data.messagesReceived.messages);
+                setFriendInfo(response.data.userInfo);
             }
         }
 
         getMessages();
     }, [id]);
+
+    useEffect(() => {
+        async function getPlayerData(array) {
+            if (friendInfo.uplay) {
+                const { data } = await api.get('/stats', {
+                    params: {
+                        username: friendInfo.uplay,
+                        platform: 'pc',
+                        type: 'seasonal',
+                    },
+                });
+
+                setAvatar({
+                    avatar_url: data.avatar_url_256,
+                });
+            }
+        }
+
+        getPlayerData();
+    }, [friendInfo]);
 
     async function handleSubmit({ message }) {
         if (allMessages.length <= 0) {
@@ -44,19 +67,21 @@ export default function Chat({ match }) {
             setAllMessages([...allMessages, { message }]);
         }
 
-        console.tron.log(chatId, message);
         await api.put(`/chat/${chatId}`, { message });
 
         setAllMessages([...allMessages, { message }]);
     }
 
-    // Message received
-    // socket.on('receivedMessage', (message) => {
-    //     setAllMessages([...allMessages, { message }]);
-    // });
-
     return (
         <Container>
+            <FriendInfo>
+                <img
+                    alt="avatar"
+                    // src="https://ubisoft-avatars.akamaized.net/befa1d9e-179f-4f34-a5f2-4c14848cc9f6/default_256_256.png"
+                    src={avatar.avatar_url}
+                />
+                <h1>{friendInfo.name}</h1>
+            </FriendInfo>
             <Content>
                 {allMessages.map((item) => (
                     <>
