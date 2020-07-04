@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import io from 'socket.io-client';
 import { useSelector } from 'react-redux';
+import SendIcon from '@material-ui/icons/Send';
+import { green } from '@material-ui/core/colors';
 import api from '~/services/api';
 
 import { Container, Content, FriendInfo, MessageField } from './styles';
@@ -95,13 +97,23 @@ export default function Chat({ match }) {
             </Content>
             <Form onSubmit={handleSubmit}>
                 <Input
+                    multiline
+                    rows={2}
                     type="text"
                     name="message"
-                    placeholder="Eliza Ash Cohen"
-                    maxLength="25"
+                    placeholder="Hi!"
+                    className="sendField"
+                    // style={{ width: 200 }}
+                    maxLength="140"
                 />
-                <button className="update" type="submit">
-                    UPDATE
+                <button className="send" type="submit">
+                    <SendIcon
+                        style={{
+                            fontSize: 30,
+                            color: green[600],
+                            paddingLeft: 5,
+                        }}
+                    />
                 </button>
             </Form>
         </Container>

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { darken } from 'polished';
+
 export const Container = styled.div`
     margin: auto;
     width: 350px;
@@ -8,28 +10,55 @@ export const Container = styled.div`
 
     form {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         /* margin-top: 20px; */
-        margin: 0 20px;
+        margin: 20px 20px;
 
-        input {
+        .sendField {
             background: rgba(255, 255, 255, 0.2);
             border: 0.5px solid #eee;
             /* box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1); */
             border-radius: 4px;
-            height: 40px;
+            height: 45px;
+            width: 80%;
             padding: 0 15px;
             color: #000;
             margin: 0 0 10px;
+            box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
             &::placeholder {
                 color: #999999;
+            }
+        }
+
+        button {
+            /* background: rgba(5, 250, 88, 0.8); */
+            border: 0;
+            height: 40px;
+            width: 40px;
+            border-radius: 25px;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            display: flex;
+            box-shadow: 5px 10px 10px 3px rgba(0, 0, 0, 0.4);
+            transition: background 0.2s;
+
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+
+            &:hover {
+                background: ${darken(0.02, 'rgba(5, 250, 88, 0.3)')};
+                -moz-transform: scale(1.1);
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
             }
         }
     }
 `;
 
 export const Content = styled.div`
-    height: 300px;
+    height: 340px;
     background: rgba(0, 25, 255, 0.2);
     overflow: auto;
     width: 350px;
