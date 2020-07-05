@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import api from '~/services/api';
 import ChatMessages from '~/components/ChatMessages';
 
-import { Container, Content, FriendList } from './styles';
+import { Container, Content, FriendList, Info } from './styles';
 
 export default function Chat({ match }) {
     const [friendId, setFriendId] = useState();
@@ -50,7 +50,15 @@ export default function Chat({ match }) {
             <Content>
                 {r6Data.map((item) => (
                     <FriendList>
-                        <span>{item.name}</span>
+                        <img
+                            alt="avatar"
+                            src="https://ubisoft-avatars.akamaized.net/befa1d9e-179f-4f34-a5f2-4c14848cc9f6/default_256_256.png"
+                            // src={avatar.avatar_url}
+                        />
+                        <Info>
+                            <h1>{item.name}</h1>
+                            <h1>Online</h1>
+                        </Info>
                     </FriendList>
                 ))}
             </Content>

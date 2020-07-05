@@ -71,6 +71,8 @@ export default function ChatMessages({ friendId }) {
 
         setAllMessages([...allMessages, { message }]);
     }
+
+    console.tron.log(allMessages);
     return (
         <Container>
             <FriendInfo>

@@ -4,7 +4,7 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
     margin: auto;
-    width: 350px;
+    width: 590px;
     height: 500px;
     background: #fff;
 
@@ -61,7 +61,7 @@ export const Content = styled.div`
     height: 340px;
     background: rgba(0, 25, 255, 0.2);
     overflow: auto;
-    width: 350px;
+    width: 100%;
     border-radius: 10px;
     border: 2px;
 `;
