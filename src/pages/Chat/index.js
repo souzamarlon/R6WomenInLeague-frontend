@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
+import io from 'socket.io-client';
 import api from '~/services/api';
 import ChatMessages from '~/components/ChatMessages';
 import ChatFriendsList from '~/components/ChatFriendsList';
@@ -11,6 +12,8 @@ import { Container, Content, ChatSelectorButton } from './styles';
 export default function Chat({ match }) {
     const [friendId, setFriendId] = useState();
     const [r6Data, setR6Data] = useState([]);
+    const [chatCreatedId, setChatCreatedId] = useState(0);
+    const [newMessages, setNewMessages] = useState([]);
 
     const { id } = match.params;
 

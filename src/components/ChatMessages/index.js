@@ -3,11 +3,9 @@ import { Form, Input } from '@rocketseat/unform';
 import { useSelector } from 'react-redux';
 import SendIcon from '@material-ui/icons/Send';
 import { green } from '@material-ui/core/colors';
+import io from 'socket.io-client';
 
 import { format, parseISO } from 'date-fns';
-import pt from 'date-fns/locale/pt';
-
-import io from 'socket.io-client';
 
 import api from '~/services/api';
 import { Container, Content, FriendInfo, MessageField } from './styles';
@@ -27,7 +25,10 @@ export default function ChatMessages({ friendId }) {
 
     socket.on('sendMessage', (data) => {
         setChatId(chatId <= 0 ? data.chatId : chatId);
-        setAllMessages([...allMessages, data]);
+        console.tron.log(data);
+        setAllMessages(
+            data.user == friendId ? [...allMessages, data] : [...allMessages]
+        );
     });
 
     useEffect(() => {
@@ -108,9 +109,7 @@ export default function ChatMessages({ friendId }) {
                 {allMessages.map((item) => (
                     <>
                         {allMessages ? (
-                            <MessageField
-                                textAlign={item.user.toString() === friendId}
-                            >
+                            <MessageField textAlign={item.user == friendId}>
                                 <h2 className="text">{item.message}</h2>
                             </MessageField>
                         ) : null}
