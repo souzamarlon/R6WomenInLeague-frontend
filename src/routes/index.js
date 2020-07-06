@@ -22,6 +22,7 @@ export default function Routes() {
             <Route path="/friends" exact component={Friends} isPrivate />
             <Route path="/profile" exact component={Profile} isPrivate />
             <Route path="/chat/:id" exact component={Chat} isPrivate />
+            <Route path="/chat" exact component={Chat} isPrivate />
         </Switch>
     );
 }

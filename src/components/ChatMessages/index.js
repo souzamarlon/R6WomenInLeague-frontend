@@ -3,6 +3,10 @@ import { Form, Input } from '@rocketseat/unform';
 import { useSelector } from 'react-redux';
 import SendIcon from '@material-ui/icons/Send';
 import { green } from '@material-ui/core/colors';
+
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
+
 import io from 'socket.io-client';
 
 import api from '~/services/api';
@@ -11,6 +15,7 @@ import { Container, Content, FriendInfo, MessageField } from './styles';
 export default function ChatMessages({ friendId }) {
     const [chatId, setChatId] = useState(0);
     const [allMessages, setAllMessages] = useState([]);
+    const [lastMessagesDate, setLastMessagesDate] = useState([]);
     const [friendInfo, setFriendInfo] = useState({});
     const [avatar, setAvatar] = useState({});
 
@@ -29,11 +34,17 @@ export default function ChatMessages({ friendId }) {
         async function getMessages() {
             try {
                 const response = await api.get(`/chat/${friendId}`);
-
+                console.tron.log(response.data);
                 if (response.data) {
                     setFriendInfo(response.data.userInfo);
                     setChatId(response.data.messagesReceived._id);
                     setAllMessages(response.data.messagesReceived.messages);
+                    setLastMessagesDate(
+                        format(
+                            parseISO(response.data.messagesReceived.updatedAt),
+                            "MMMM d',' yyyy"
+                        )
+                    );
                 }
             } catch (err) {
                 // hasMessages(false);
@@ -91,6 +102,7 @@ export default function ChatMessages({ friendId }) {
                     }
                 />
                 <h1>{friendInfo.name}</h1>
+                <h1>{`Last message: ${lastMessagesDate}`}</h1>
             </FriendInfo>
             <Content>
                 {allMessages.map((item) => (
