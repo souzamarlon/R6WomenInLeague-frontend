@@ -60,9 +60,8 @@ export default function Card({ dataR6, friendAdded }) {
                     }
                 }
             } catch (err) {
-                const { error } = err.response.data;
-
-                console.log('Error', error);
+                // const { error } = err.response.data;
+                // console.log('Error', error);
             }
         }
 

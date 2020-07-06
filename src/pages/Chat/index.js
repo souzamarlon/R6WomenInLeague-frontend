@@ -4,12 +4,14 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import api from '~/services/api';
 import ChatMessages from '~/components/ChatMessages';
+import ChatFriendsList from '~/components/ChatFriendsList';
 
-import { Container, Content, FriendList, Info } from './styles';
+import { Container, Content, ChatSelectorButton } from './styles';
 
 export default function Chat({ match }) {
     const [friendId, setFriendId] = useState();
     const [r6Data, setR6Data] = useState([]);
+
     const { id } = match.params;
 
     const userId = useSelector((state) => state.user.profile.id);
@@ -45,21 +47,20 @@ export default function Chat({ match }) {
         SearchFun();
     }, [friendId, userId]);
 
+    function chatWithFriend(chatFriendId) {
+        setFriendId(chatFriendId);
+    }
+
     return (
         <Container>
             <Content>
                 {r6Data.map((item) => (
-                    <FriendList>
-                        <img
-                            alt="avatar"
-                            src="https://ubisoft-avatars.akamaized.net/befa1d9e-179f-4f34-a5f2-4c14848cc9f6/default_256_256.png"
-                            // src={avatar.avatar_url}
-                        />
-                        <Info>
-                            <h1>{item.name}</h1>
-                            <h1>Online</h1>
-                        </Info>
-                    </FriendList>
+                    <ChatSelectorButton
+                        type="button"
+                        onClick={() => chatWithFriend(item.id)}
+                    >
+                        <ChatFriendsList userInfo={item} />
+                    </ChatSelectorButton>
                 ))}
             </Content>
             {friendId ? <ChatMessages friendId={friendId} /> : null}

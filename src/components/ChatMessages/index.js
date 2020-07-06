@@ -27,12 +27,19 @@ export default function ChatMessages({ friendId }) {
 
     useEffect(() => {
         async function getMessages() {
-            const response = await api.get(`/chat/${friendId}`);
+            try {
+                const response = await api.get(`/chat/${friendId}`);
 
-            if (response.data) {
-                setChatId(response.data.messagesReceived._id);
-                setAllMessages(response.data.messagesReceived.messages);
-                setFriendInfo(response.data.userInfo);
+                if (response.data) {
+                    setFriendInfo(response.data.userInfo);
+                    setChatId(response.data.messagesReceived._id);
+                    setAllMessages(response.data.messagesReceived.messages);
+                }
+            } catch (err) {
+                // hasMessages(false);
+
+                setAllMessages([]);
+                setChatId(0);
             }
         }
 
@@ -40,7 +47,7 @@ export default function ChatMessages({ friendId }) {
     }, [friendId]);
 
     useEffect(() => {
-        async function getPlayerData(array) {
+        async function getPlayerData() {
             if (friendInfo.uplay) {
                 const { data } = await api.get('/stats', {
                     params: {
@@ -57,29 +64,31 @@ export default function ChatMessages({ friendId }) {
         }
 
         getPlayerData();
-    }, [friendInfo]);
+    }, [friendInfo, friendId]);
 
     async function handleSubmit({ message }) {
         if (allMessages.length <= 0) {
             const response = await api.post(`/chat/${friendId}`, { message });
             // setChatId(_id);
             setChatId(response.data._id);
-            setAllMessages([...allMessages, { message }]);
+            setAllMessages([...allMessages, { user: profile.id, message }]);
         }
 
         await api.put(`/chat/${chatId}`, { message });
 
-        setAllMessages([...allMessages, { message }]);
+        setAllMessages([...allMessages, { user: profile.id, message }]);
     }
 
-    console.tron.log(allMessages);
     return (
         <Container>
             <FriendInfo>
                 <img
                     alt="avatar"
-                    // src="https://ubisoft-avatars.akamaized.net/befa1d9e-179f-4f34-a5f2-4c14848cc9f6/default_256_256.png"
-                    src={avatar.avatar_url}
+                    src={
+                        avatar.avatar_url
+                            ? avatar.avatar_url
+                            : 'https://api.adorable.io/avatars/50/abott@adorable.png'
+                    }
                 />
                 <h1>{friendInfo.name}</h1>
             </FriendInfo>

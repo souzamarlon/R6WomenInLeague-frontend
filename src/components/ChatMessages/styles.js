@@ -4,9 +4,10 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
     margin: auto;
-    width: 590px;
-    height: 500px;
+    width: 605px;
+    height: 700px;
     background: #fff;
+    border-radius: 4px;
 
     form {
         display: flex;
@@ -57,15 +58,6 @@ export const Container = styled.div`
     }
 `;
 
-export const Content = styled.div`
-    height: 340px;
-    background: rgba(0, 25, 255, 0.2);
-    overflow: auto;
-    width: 100%;
-    border-radius: 10px;
-    border: 2px;
-`;
-
 export const FriendInfo = styled.div`
     height: 65px;
     width: 100%;
@@ -86,6 +78,18 @@ export const FriendInfo = styled.div`
         font-size: 12px;
         color: #fff;
     }
+`;
+
+export const Content = styled.div`
+    height: 540px;
+    background: rgba(222, 222, 255, 0.3);
+    overflow: auto;
+    width: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    /* border-radius: 10px; */
+    /* border: 2px; */
 `;
 
 export const MessageField = styled.div`
