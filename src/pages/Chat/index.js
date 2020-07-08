@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 import io from 'socket.io-client';
 import api from '~/services/api';
 
-import ChatMessages from '~/components/ChatMessages';
-import ChatFriendsList from '~/components/ChatFriendsList';
+import ChatMessages from '~/components/Chat/ChatMessages';
+import ChatFriendsList from '~/components/Chat/ChatFriendsList';
 
 import { Container, Content, ChatSelectorButton } from './styles';
 

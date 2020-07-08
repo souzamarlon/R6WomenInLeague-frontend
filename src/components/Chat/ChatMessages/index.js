@@ -93,7 +93,7 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
             setChatId(response.data._id);
             setAllMessages([...allMessages, { user: profile.id, message }]);
         }
-        console.tron.log(chatId, friendId, message);
+
         await api.put(`/chat/${chatId}`, { message });
 
         setAllMessages([...allMessages, { user: profile.id, message }]);
