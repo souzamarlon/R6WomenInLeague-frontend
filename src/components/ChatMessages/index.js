@@ -3,14 +3,13 @@ import { Form, Input } from '@rocketseat/unform';
 import { useSelector } from 'react-redux';
 import SendIcon from '@material-ui/icons/Send';
 import { green } from '@material-ui/core/colors';
-import io from 'socket.io-client';
-
+// import io from 'socket.io-client';
 import { format, parseISO } from 'date-fns';
 
 import api from '~/services/api';
 import { Container, Content, FriendInfo, MessageField } from './styles';
 
-export default function ChatMessages({ friendId }) {
+export default function ChatMessages({ friendId, newMessages, newChatId }) {
     const [chatId, setChatId] = useState(0);
     const [allMessages, setAllMessages] = useState([]);
     const [lastMessagesDate, setLastMessagesDate] = useState([]);
@@ -19,23 +18,23 @@ export default function ChatMessages({ friendId }) {
 
     const profile = useSelector((state) => state.user.profile);
 
-    const socket = io(process.env.REACT_APP_API_URL, {
-        query: { user: profile.id },
-    });
+    // const socket = io(process.env.REACT_APP_API_URL, {
+    //     query: { user: profile.id },
+    // });
 
-    socket.on('sendMessage', (data) => {
-        setChatId(chatId <= 0 ? data.chatId : chatId);
-        console.tron.log(data);
-        setAllMessages(
-            data.user == friendId ? [...allMessages, data] : [...allMessages]
-        );
-    });
+    // socket.on('sendMessage', (data) => {
+    //     setChatId(chatId <= 0 ? data.chatId : chatId);
+
+    //     setAllMessages(
+    //         data.user == friendId ? [...allMessages, data] : [...allMessages]
+    //     );
+    // });
 
     useEffect(() => {
         async function getMessages() {
             try {
                 const response = await api.get(`/chat/${friendId}`);
-                console.tron.log(response.data);
+                // console.tron.log(response.data);
                 if (response.data) {
                     setFriendInfo(response.data.userInfo);
                     setChatId(response.data.messagesReceived._id);
@@ -78,6 +77,15 @@ export default function ChatMessages({ friendId }) {
         getPlayerData();
     }, [friendInfo, friendId]);
 
+    useEffect(() => {
+        if (!chatId) {
+            setChatId(newChatId);
+        }
+        if (newMessages) {
+            setAllMessages([...allMessages, newMessages]);
+        }
+    }, [newMessages, newChatId]);
+
     async function handleSubmit({ message }) {
         if (allMessages.length <= 0) {
             const response = await api.post(`/chat/${friendId}`, { message });
@@ -85,7 +93,7 @@ export default function ChatMessages({ friendId }) {
             setChatId(response.data._id);
             setAllMessages([...allMessages, { user: profile.id, message }]);
         }
-
+        console.tron.log(chatId, friendId, message);
         await api.put(`/chat/${chatId}`, { message });
 
         setAllMessages([...allMessages, { user: profile.id, message }]);
