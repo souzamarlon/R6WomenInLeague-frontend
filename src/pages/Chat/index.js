@@ -15,6 +15,7 @@ export default function Chat({ match }) {
     const [r6Data, setR6Data] = useState([]);
     const [newMessages, setNewMessages] = useState(false);
     const [newChatId, setNewChatId] = useState(0);
+    const [status, setStatus] = useState({});
 
     const { id } = match.params;
 
@@ -51,8 +52,34 @@ export default function Chat({ match }) {
                 });
 
                 const friendsData = response.data.map((item) =>
-                    item.user_id === userId ? item.friend : item.user
+                    item.user_id === userId
+                        ? {
+                              id: item.friend.id,
+                              name: item.friend.name,
+                              uplay: item.friend.uplay,
+                              ranked: item.friend.ranked,
+                              competition: item.friend.competition,
+                              times: item.friend.times,
+                              play_style: item.friend.play_style,
+                              discord_user: item.friend.discord_user,
+                              region: item.friend.region,
+                              status: item.status,
+                          }
+                        : {
+                              id: item.user.id,
+                              name: item.user.name,
+                              uplay: item.user.uplay,
+                              ranked: item.user.ranked,
+                              competition: item.user.competition,
+                              times: item.user.times,
+                              play_style: item.user.play_style,
+                              discord_user: item.user.discord_user,
+                              region: item.user.region,
+                              status: item.status,
+                          }
                 );
+
+                console.tron.log(friendsData);
 
                 setR6Data(friendsData);
             } catch (err) {
