@@ -7,8 +7,6 @@ export const Container = styled.div`
     border-radius: 4px;
     background: #333;
     box-shadow: 5px 10px 10px 3px rgba(0, 0, 0, 0.4);
-    justify-content: space-around;
-
     align-items: center;
 
     flex-direction: row;
@@ -22,10 +20,22 @@ export const Container = styled.div`
         width: 50px;
         height: 55px;
         border-radius: 100%;
-        margin: 0 2px;
+        margin: 0 10px;
     }
 `;
 
 export const Info = styled.div`
-    margin-right: 20px;
+    width: 110px;
+
+    /* background: #fff; */
+    justify-content: center;
+    /* align-items: center; */
+
+    .online {
+        color: #29f907;
+    }
+
+    .offline {
+        color: #f90707;
+    }
 `;

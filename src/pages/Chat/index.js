@@ -79,8 +79,6 @@ export default function Chat({ match }) {
                           }
                 );
 
-                console.tron.log(friendsData);
-
                 setR6Data(friendsData);
             } catch (err) {
                 toast.error('Failure!');
