@@ -74,7 +74,12 @@ export const FriendInfo = styled.div`
         margin: 0 10px;
     }
     h1 {
-        margin: 0 10px;
+        margin: 0 5px;
+        font-size: 12px;
+        color: #fff;
+    }
+    h2 {
+        margin-left: 20px;
         font-size: 12px;
         color: #fff;
     }

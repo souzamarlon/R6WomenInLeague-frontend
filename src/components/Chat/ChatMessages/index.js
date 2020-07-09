@@ -5,6 +5,7 @@ import SendIcon from '@material-ui/icons/Send';
 import { green } from '@material-ui/core/colors';
 // import io from 'socket.io-client';
 import { format, parseISO } from 'date-fns';
+import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 
 import api from '~/services/api';
 import { Container, Content, FriendInfo, MessageField } from './styles';
@@ -15,6 +16,7 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
     const [lastMessagesDate, setLastMessagesDate] = useState([]);
     const [friendInfo, setFriendInfo] = useState({});
     const [avatar, setAvatar] = useState({});
+    const [status, setStatus] = useState(false);
 
     const profile = useSelector((state) => state.user.profile);
 
@@ -34,11 +36,12 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
         async function getMessages() {
             try {
                 const response = await api.get(`/chat/${friendId}`);
-                // console.tron.log(response.data);
+
                 if (response.data) {
                     setFriendInfo(response.data.userInfo);
                     setChatId(response.data.messagesReceived._id);
                     setAllMessages(response.data.messagesReceived.messages);
+                    setStatus(response.data.status);
                     setLastMessagesDate(
                         format(
                             parseISO(response.data.messagesReceived.updatedAt),
@@ -110,8 +113,15 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
                             : 'https://api.adorable.io/avatars/50/abott@adorable.png'
                     }
                 />
+
                 <h1>{friendInfo.name}</h1>
-                <h1>{`Last message: ${lastMessagesDate}`}</h1>
+                {status ? (
+                    <RadioButtonCheckedIcon style={{ color: green[500] }} />
+                ) : (
+                    <RadioButtonCheckedIcon color="disabled" />
+                )}
+
+                <h2>{`Last message: ${lastMessagesDate}`}</h2>
             </FriendInfo>
             <Content>
                 {allMessages.map((item) => (

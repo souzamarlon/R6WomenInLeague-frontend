@@ -36,13 +36,9 @@ export default function ChatFriendsList({ userInfo }) {
             <Info>
                 <h1>{userInfo.name}</h1>
                 {userInfo.status ? (
-                    <h1 className="online" color>
-                        Online
-                    </h1>
+                    <h1 className="online">Online</h1>
                 ) : (
-                    <h1 className="offline" color={false}>
-                        Offline
-                    </h1>
+                    <h1 className="offline">Offline</h1>
                 )}
             </Info>
         </Container>
