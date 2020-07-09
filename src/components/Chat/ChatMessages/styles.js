@@ -99,7 +99,7 @@ export const Content = styled.div`
 
 export const MessageField = styled.div`
     text-align: ${(props) => (props.textAlign ? 'left' : 'right')};
-    background: ${(props) => (props.textAlign ? '#FFF' : '#264')};
+    background: ${(props) => (props.textAlign ? '#FFF' : '#dcf8c6')};
     border-radius: 20px;
 
     margin: 7px 10px;
