@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { NavLink } from 'react-router-dom';
-
+import ChatIcon from '@material-ui/icons/Chat';
 import history from '~/services/history';
 import { Container, Content, AlignNotification } from './styles';
 
@@ -43,6 +43,12 @@ export default function Header() {
 
                         <NavLink to="/profile" activeClassName="selected">
                             PROFILE
+                        </NavLink>
+                        <NavLink to="/chat" activeClassName="selected">
+                            CHAT
+                            <ChatIcon
+                                style={{ fontSize: 15, paddingLeft: 2 }}
+                            />
                         </NavLink>
                     </nav>
                 </>
