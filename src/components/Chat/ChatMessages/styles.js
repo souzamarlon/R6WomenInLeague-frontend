@@ -103,14 +103,17 @@ export const MessageField = styled.div`
     border-radius: 20px;
 
     margin: 7px 10px;
-    padding: 0 10px;
+    padding: 5px 10px;
+    padding-bottom: 10px;
     justify-content: center;
     align-items: center;
-    height: 30px;
 
     .text {
         color: #000;
         font-size: 12px;
         padding-top: 7px;
+        overflow: visible;
+        word-break: break-all;
+        text-overflow: ellipsis;
     }
 `;

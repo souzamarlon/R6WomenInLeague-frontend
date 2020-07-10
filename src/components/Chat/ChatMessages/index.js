@@ -143,7 +143,7 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
                     placeholder="Hi!"
                     className="sendField"
                     // style={{ width: 200 }}
-                    maxLength="140"
+                    maxLength="240"
                 />
                 <button className="send" type="submit">
                     <SendIcon
