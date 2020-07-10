@@ -9,14 +9,17 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-    width: 190px;
+    width: 200px;
     height: 700px;
+    /* padding-top: 5px; */
     border-radius: 4px;
+
     background: #288;
     overflow: auto;
 `;
 
 export const ChatSelectorButton = styled.button`
-    border: 1px;
+    border: 0;
     background: #444;
+    border-radius: 4px;
 `;
