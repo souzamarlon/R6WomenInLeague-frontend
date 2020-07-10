@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import { useSelector } from 'react-redux';
 import SendIcon from '@material-ui/icons/Send';
@@ -19,6 +19,10 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
     const [status, setStatus] = useState(false);
 
     const profile = useSelector((state) => state.user.profile);
+
+    const scrollList = useRef();
+
+    // console.log(scrollList.current);
 
     // const socket = io(process.env.REACT_APP_API_URL, {
     //     query: { user: profile.id },
@@ -48,6 +52,12 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
                             "MMMM d',' yyyy"
                         )
                     );
+
+                    // scrollList.current.scrollIntoView({
+                    //     behavior: 'smooth',
+                    //     block: 'end',
+                    //     inline: 'nearest',
+                    // });
                 }
             } catch (err) {
                 // hasMessages(false);
@@ -123,11 +133,14 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
 
                 <h2>{`Last message: ${lastMessagesDate}`}</h2>
             </FriendInfo>
-            <Content>
+            <Content ref={scrollList}>
                 {allMessages.map((item) => (
                     <>
                         {allMessages ? (
-                            <MessageField textAlign={item.user == friendId}>
+                            <MessageField
+                                key={item._id}
+                                textAlign={item.user == friendId}
+                            >
                                 <h2 className="text">{item.message}</h2>
                             </MessageField>
                         ) : null}
