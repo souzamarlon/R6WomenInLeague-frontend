@@ -88,10 +88,23 @@ export const FriendInfo = styled.div`
 export const Content = styled.div`
     height: 540px;
     background: rgba(222, 222, 255, 0.3);
-    overflow: auto;
+    overflow: hidden;
+
     width: 100%;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    transition: all 0.5s;
+
+    &:hover {
+        overflow: auto;
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+    }
 
     /* border-radius: 10px; */
     /* border: 2px; */

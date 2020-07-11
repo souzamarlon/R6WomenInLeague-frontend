@@ -92,17 +92,16 @@ export default function Chat({ match }) {
         setFriendId(chatFriendId);
     }
 
-    console.tron.log(r6Data);
-
     return (
         <Container>
             <Content>
                 {r6Data.map((item) => (
                     <ChatSelectorButton
+                        key={item.id}
                         type="button"
                         onClick={() => chatWithFriend(item.id)}
                     >
-                        <ChatFriendsList key={item.id} userInfo={item} />
+                        <ChatFriendsList userInfo={item} />
                     </ChatSelectorButton>
                 ))}
             </Content>

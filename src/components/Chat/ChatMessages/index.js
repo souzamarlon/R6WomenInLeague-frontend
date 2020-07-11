@@ -20,9 +20,7 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
 
     const profile = useSelector((state) => state.user.profile);
 
-    const scrollList = useRef();
-
-    // console.log(scrollList.current);
+    const ref = useRef(null);
 
     // const socket = io(process.env.REACT_APP_API_URL, {
     //     query: { user: profile.id },
@@ -53,11 +51,11 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
                         )
                     );
 
-                    // scrollList.current.scrollIntoView({
-                    //     behavior: 'smooth',
-                    //     block: 'end',
-                    //     inline: 'nearest',
-                    // });
+                    ref.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'end',
+                        inline: 'nearest',
+                    });
                 }
             } catch (err) {
                 // hasMessages(false);
@@ -133,19 +131,18 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
 
                 <h2>{`Last message: ${lastMessagesDate}`}</h2>
             </FriendInfo>
-            <Content ref={scrollList}>
-                {allMessages.map((item) => (
-                    <>
-                        {allMessages ? (
-                            <MessageField
-                                key={item._id}
-                                textAlign={item.user == friendId}
-                            >
-                                <h2 className="text">{item.message}</h2>
+            <Content>
+                {allMessages ? (
+                    <div ref={ref}>
+                        {allMessages.map((item) => (
+                            <MessageField textAlign={item.user == friendId}>
+                                <h2 className="text" key={item._id}>
+                                    {item.message}
+                                </h2>
                             </MessageField>
-                        ) : null}
-                    </>
-                ))}
+                        ))}
+                    </div>
+                ) : null}
             </Content>
             <Form onSubmit={handleSubmit}>
                 <Input
