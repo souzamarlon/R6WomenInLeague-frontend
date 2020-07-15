@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import api from '~/services/api';
 
 import { Content, Avatar } from './styles';
@@ -8,7 +9,7 @@ export default function Card({ dataR6, friendAdded }) {
     const [playerData, setPlayerData] = useState([{}]);
 
     useEffect(() => {
-        async function getPlayerData(array) {
+        async function getPlayerData() {
             try {
                 const response = await api.get('/stats', {
                     params: {
@@ -117,3 +118,16 @@ export default function Card({ dataR6, friendAdded }) {
         </Content>
     );
 }
+
+Card.propTypes = {
+    dataR6: PropTypes.shape({
+        uplay: PropTypes.string,
+        region: PropTypes.string,
+        name: PropTypes.string,
+        id: PropTypes.number,
+        ranked: PropTypes.bool,
+        competition: PropTypes.bool,
+        play_style: PropTypes.string,
+        times: PropTypes.string,
+    }).isRequired,
+};
