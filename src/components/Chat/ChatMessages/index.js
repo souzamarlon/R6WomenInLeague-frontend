@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import SendIcon from '@material-ui/icons/Send';
 import { green } from '@material-ui/core/colors';
 // import io from 'socket.io-client';
@@ -168,3 +169,9 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
         </Container>
     );
 }
+
+ChatMessages.propTypes = {
+    newMessages: PropTypes.string.isRequired,
+    friendId: PropTypes.number.isRequired,
+    newChatId: PropTypes.number.isRequired,
+};
