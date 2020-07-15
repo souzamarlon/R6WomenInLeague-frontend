@@ -15,7 +15,19 @@ export const Content = styled.div`
     border-radius: 4px;
 
     background: #288;
-    overflow: auto;
+    overflow: hidden;
+    /* border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; */
+    &:hover {
+        overflow: auto;
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+    }
 `;
 
 export const ChatSelectorButton = styled.button`
