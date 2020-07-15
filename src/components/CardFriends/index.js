@@ -156,48 +156,53 @@ export default function CardFriends({ cardId, dataR6, allData }) {
                     }
                 />
             </Avatar>
-            <Popup
-                key={dataR6.id}
-                trigger={
-                    <button type="button" className="more-button">
-                        <div className="iconMoreHoriz">
-                            <MoreHoriz color="primary" fontSize="large" />
-                        </div>
-                    </button>
-                }
-                // position="bottom center"
-                on="hover"
-                contentStyle={{
-                    width: '3.50vw',
-                    borderRadius: '5%',
-                    marginTop: 2,
-                    backgroundColor: 'rgba(255, 255, 255, 1)',
-                    border: 0,
-                }}
-            >
-                <PopupOptions>
-                    <button
-                        type="button"
-                        className="options"
-                        onClick={() => removeFriend(cardId)}
-                    >
-                        Remove
-                    </button>
-                    <button
-                        type="button"
-                        className="options"
-                        onClick={() => reportFake(cardId)}
-                    >
-                        Report a fake
-                    </button>
-                    <button type="button" className="options">
-                        <Link to={`/chat/${dataR6.id}`}> Chat </Link>
-                    </button>
-                </PopupOptions>
-            </Popup>
 
             {allData.accepted ? (
                 <>
+                    <Popup
+                        key={dataR6.id}
+                        trigger={
+                            <button type="button" className="more-button">
+                                <div className="iconMoreHoriz">
+                                    <MoreHoriz
+                                        color="primary"
+                                        fontSize="large"
+                                    />
+                                </div>
+                            </button>
+                        }
+                        // position="bottom center"
+                        on="hover"
+                        contentStyle={{
+                            width: '3.50vw',
+                            borderRadius: '5%',
+                            marginTop: 2,
+                            backgroundColor: 'rgba(255, 255, 255, 1)',
+                            border: 0,
+                        }}
+                    >
+                        <PopupOptions>
+                            <button
+                                type="button"
+                                className="options"
+                                onClick={() => removeFriend(cardId)}
+                            >
+                                Remove
+                            </button>
+                            <button
+                                type="button"
+                                className="options"
+                                onClick={() => reportFake(cardId)}
+                            >
+                                Report a fake
+                            </button>
+                            <Link to={`/chat/${dataR6.id}`}>
+                                <button type="button" className="options">
+                                    Chat
+                                </button>
+                            </Link>
+                        </PopupOptions>
+                    </Popup>
                     <h1>{dataR6.name}</h1>
 
                     <AlignUplayIcon>
