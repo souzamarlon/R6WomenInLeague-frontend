@@ -33,6 +33,12 @@ export default function Chat({ match }) {
         }
     });
 
+    socket.on('status', (data) => {
+        if (data.userId === friendId) {
+            setStatus(data.status);
+        }
+    });
+
     useEffect(() => {
         async function friendIdFunction() {
             setFriendId(id);
@@ -110,6 +116,7 @@ export default function Chat({ match }) {
                     friendId={friendId}
                     newMessages={newMessages}
                     newChatId={newChatId}
+                    friendStatus={status}
                 />
             ) : null}
         </Container>

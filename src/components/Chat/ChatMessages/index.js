@@ -11,7 +11,12 @@ import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import api from '~/services/api';
 import { Container, Content, FriendInfo, MessageField } from './styles';
 
-export default function ChatMessages({ friendId, newMessages, newChatId }) {
+export default function ChatMessages({
+    friendId,
+    newMessages,
+    newChatId,
+    friendStatus,
+}) {
     const [chatId, setChatId] = useState(0);
     const [allMessages, setAllMessages] = useState([]);
     const [lastMessagesDate, setLastMessagesDate] = useState([]);
@@ -96,7 +101,11 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
         if (newMessages) {
             setAllMessages([...allMessages, newMessages]);
         }
-    }, [newMessages, newChatId]);
+
+        if (friendStatus) {
+            setStatus(friendStatus);
+        }
+    }, [newMessages, newChatId, friendStatus]);
 
     async function handleSubmit({ message }) {
         if (allMessages.length <= 0) {
@@ -127,7 +136,7 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
                 {status ? (
                     <RadioButtonCheckedIcon style={{ color: green[500] }} />
                 ) : (
-                    <RadioButtonCheckedIcon color="disabled" />
+                    <RadioButtonCheckedIcon style={{ color: '#f90707' }} />
                 )}
 
                 <h2>{`Last message: ${lastMessagesDate}`}</h2>
@@ -136,10 +145,11 @@ export default function ChatMessages({ friendId, newMessages, newChatId }) {
                 {allMessages ? (
                     <div ref={ref}>
                         {allMessages.map((item) => (
-                            <MessageField textAlign={item.user == friendId}>
-                                <h2 className="text" key={item._id}>
-                                    {item.message}
-                                </h2>
+                            <MessageField
+                                textAlign={item.user == friendId}
+                                key={item._id}
+                            >
+                                <h2 className="text">{item.message}</h2>
                             </MessageField>
                         ))}
                     </div>
@@ -174,4 +184,5 @@ ChatMessages.propTypes = {
     newMessages: PropTypes.string.isRequired,
     friendId: PropTypes.number.isRequired,
     newChatId: PropTypes.number.isRequired,
+    friendStatus: PropTypes.bool.isRequired,
 };
