@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 import {
     MoreHoriz,
@@ -282,3 +284,24 @@ export default function CardFriends({ cardId, dataR6, allData }) {
         </Container>
     );
 }
+
+CardFriends.propTypes = {
+    dataR6: PropTypes.shape({
+        uplay: PropTypes.string,
+        region: PropTypes.string,
+        name: PropTypes.string,
+        id: PropTypes.number,
+        ranked: PropTypes.bool,
+        competition: PropTypes.bool,
+        play_style: PropTypes.string,
+        times: PropTypes.string,
+        discord_user: PropTypes.string,
+    }).isRequired,
+    cardId: PropTypes.number.isRequired,
+    allData: PropTypes.shape({
+        accepted: PropTypes.bool,
+        user: PropTypes.shape({
+            id: PropTypes.number,
+        }),
+    }).isRequired,
+};
