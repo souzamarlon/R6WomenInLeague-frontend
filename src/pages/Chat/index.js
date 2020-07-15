@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import io from 'socket.io-client';
+import PropTypes from 'prop-types';
 import api from '~/services/api';
 
 import ChatMessages from '~/components/Chat/ChatMessages';
@@ -122,3 +123,11 @@ export default function Chat({ match }) {
         </Container>
     );
 }
+
+Chat.propTypes = {
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            id: PropTypes.number,
+        }),
+    }).isRequired,
+};
