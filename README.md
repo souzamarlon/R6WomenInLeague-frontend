@@ -46,7 +46,7 @@ Front-end:
 - [yup](https://github.com/jquense/yup)
 - [prettier](https://prettier.io/)
 - [reactotron](https://github.com/infinitered/reactotron)
-- [socket.io](https://socket.io/docs/server-installation/)
+- [socket.io](https://socket.io/docs/client-installation/)
 
 Front-end:
 - [VS Code][vc] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
